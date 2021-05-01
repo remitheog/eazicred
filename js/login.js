@@ -21,6 +21,14 @@ mail.onkeyup= e => {
         e.target.style.borderColor='red' 
     }
 }
+//password validation
+pswrd.onkeyup=e=>{
+    if(e.target.value.length < 8) {
+       let leave= document.querySelector('#blue')
+      
+        
+    }
+}
 
 form.onsubmit= e=>{
     e.preventDefault()
@@ -33,11 +41,18 @@ form.onsubmit= e=>{
         fetch(endpoint,{
             method:'POST',
             headers:{
-                'Content-Type':'application/json: utf-8'
+                'Content-Type':'application/json'
             },
-            body:JSON.stringify(credit)
+            body:JSON.stringify({
+                email:mail.value,
+                password:pswrd.value,
+             
+            })
+            
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {console.log(data)
+            
+        })
     
 }
