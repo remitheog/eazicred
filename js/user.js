@@ -16,11 +16,11 @@ mail.onkeyup= e => {
     let msg=document.querySelector('.msg');
     let pattern=/[a-zA-Z0-9]\@gmail\.com|[a-zA-Z0-9]\@yahoo\.com/ig;
     if(e.target.value.match(pattern)){
-        msg.textContent=" password must not be less than digits"
+        msg.textContent=" this is a valid email address "
         msg.classList.add('verify');
         e.target.style.borderColor='green' 
     } else{
-        msg.textContent=" password must not be less than digits" 
+        msg.textContent=" please insert a valid email address" 
         msg.classList.add('error');
         e.target.style.borderColor='red' 
     }

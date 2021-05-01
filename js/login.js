@@ -12,11 +12,11 @@ mail.onkeyup= e => {
     let pattern=/[a-zA-Z0-9]\@gmail\.com|[a-zA-Z0-9]\@yahoo\.com/ig;
         //match the inout vlaue with regular expersion
     if(e.target.value.match(pattern)){
-        msg.textContent=" password must not be less than digits"
+        msg.textContent=" valid email"
         msg.classList.add('verify');
         e.target.style.borderColor='green' 
     } else{
-        msg.textContent=" password must not be less than digits" 
+        msg.textContent="please insert a valid email address" 
         msg.classList.add('error');
         e.target.style.borderColor='red' 
     }
