@@ -33,15 +33,15 @@ pswrd.onkeyup=ev=>{
     let pass_err=document.querySelector('.pswrd_err')
     let theMax=6
     if(ev.target.value.length < theMax){
-        pass_err.textContent='password must cant be less than 6 characters';
+        pass_err.textContent='password  cant be less than 6 characters';
         pass_err.classList.add('error')
-    } else if(ev.target.value.match(/\d\w/i)) {
-        pass_err=document.querySelector('strong password, i suggest you this')
-        
-    }
-     else {
+        document.querySelector('#submit').disabled=true
+    } else {
+       let btn= document.querySelector('#submit').disabled=false
+       
         pass_err.textContent='you are good to go ';
         pass_err.classList.add('verify')
+        
     }
 }
 
@@ -49,8 +49,8 @@ pswrd.onkeyup=ev=>{
 //handle thefor datas now
 form.onsubmit= e=> {
     e.preventDefault();
-    
-    //the input data that will be pushedto db
+ 
+   //the input data that will be pushedto db
     let db={
         firstname:firstName.value,
         lastname:lastName.value,
@@ -79,7 +79,10 @@ form.onsubmit= e=> {
             console.log(db);
         })
 
+        
 }
+
+
 
 
 
