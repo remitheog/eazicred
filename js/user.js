@@ -73,8 +73,10 @@ form.onsubmit= e=> {
         }).then( res=> res.json())
         .then(info=>{
             console.log(info)
+            localStorage.setItem('user','user auth')
             setTimeout(()=>{
-                swal('Account Created','Your account has been created successfully','success')
+                swal('Account Created','Your account has been created successfully','success');
+                window.location='./dashboard/home.html'
             },2000)
             console.log(db);
         })
@@ -82,7 +84,9 @@ form.onsubmit= e=> {
         
 }
 
-
+if(localStorage.getItem('user')) {
+    alert('user')
+}
 
 
 

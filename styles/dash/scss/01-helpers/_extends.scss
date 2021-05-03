@@ -1,0 +1,14 @@
+.containerExtend {
+    width: 100%;
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.innerFlex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+// RESPONSIVNESS AND MEDIA QUERIES

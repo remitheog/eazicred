@@ -1,0 +1,325 @@
+// HOME TAB
+.dashboard {
+    height: 100vh;
+    font-size: 1.3rem;
+    overflow-y: hidden;
+
+    .container-lg {
+        display: flex;
+        height: 100vh;
+    }
+
+    .sidebar {
+        background-color: #F8F8F8;
+        flex-basis: 20%;
+        padding: 4rem 2rem;
+        position: relative;
+
+        .logo-db {
+            display: inline-block;
+            margin-bottom: 3.2rem;
+        }
+        
+        .h4-db {
+            margin-bottom: 1.7rem;
+            text-transform: uppercase;
+            color: $color-25;
+            font-weight: 500;
+            font-size: 1.2rem;
+        }
+
+        &-list {
+            padding: 0 1rem;
+            margin-bottom: 4rem;
+
+            li {
+                margin-bottom: 1.8rem;
+            }
+
+            a {
+                color: $color-26;
+            }
+
+            a.active {
+                color: $color-1;
+            }
+        }
+
+        .logout-btn {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 4rem;
+            text-align: center;
+            background: none;
+            border: none;
+            outline: none;
+            color: $color-26;
+            font-family: inherit;
+            font-weight: 700;
+            cursor: pointer;
+        }
+    }
+
+    .main {
+        flex: 1;
+
+        &__top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 3rem 5rem 1rem;
+            border-bottom: 1px solid $color-22;
+
+            .h3-db {
+                color: $color-4;
+            }
+
+            .user-picture {
+                width: 3.5rem;
+                width: 3.5rem;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+        }
+
+        &__middle {
+            padding: 2rem 5rem;
+
+            .go-back {
+                display: block;
+                margin-bottom: 2rem;
+            }
+
+            .h2-db {
+                color: $color-4;
+                font-weight: 900;
+            }
+
+            span {
+                font-weight: 500;
+            }
+        }
+
+        &__user-overview {
+            padding: 2rem 5rem;
+            margin-top: -2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            div {
+                width: 30%;
+                height: 12rem;
+                padding: 3rem;
+                border-radius: 5px;
+                background-image: url('../../../assets/Patterns.svg');
+                color: $color-11;
+            }
+
+            div:nth-child(1) {
+                background-color: $color-1;
+            }
+
+            div:nth-child(2) {
+                background-color: #0B2AA5;
+            }
+
+            div:nth-child(3) {
+                background-color: #5720D9;
+            }
+
+            span {
+                font-weight: 700;
+                font-size: 1.9rem;
+            }
+        }
+
+        // USER WITH NO LOAN HISTORY
+        &__loan-nohistory {
+            padding: 2rem 5rem;
+            
+
+            div {
+                border: 1px solid $color-22;
+                border-radius: 5px;
+                padding: 3rem;
+                text-align: center;
+
+                a {color: $color-1;}
+            }
+        }
+
+        // USER WITH LOAN HISTORY
+        &__loan-history {
+            padding: 2rem 5rem;
+
+            .top {
+                display: flex;
+                justify-content: space-between;
+
+                .view-history {
+                    background: transparent;
+                    padding: .6rem 2rem;
+                    border: 1px solid $color-2;
+                    font-size: 1.25rem;
+                }
+            }
+
+            .middle {
+                background-color: #F8F8F8;
+                margin-top: 1rem;
+                height: 28rem;
+                overflow-y: scroll;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+
+                &-row {
+                    display: grid;
+                    grid-template-columns: repeat(5, 1fr);
+                    column-gap: .5rem;
+                    align-items: center;
+                    color: $color-8;
+                }
+
+                &-heading {
+                    font-weight: 700;
+                    font-size: 1.15rem;
+                    padding: 2.5rem 3rem;
+                }
+
+                span {
+                    display: block;
+                }
+
+                &-history {
+                    padding: 1.8rem 3rem;
+                }
+
+                &-history:not(:last-child) {
+                    border-top: 1px solid $color-22;
+                }
+
+                .view-details {
+                    background: #E1E6F572;
+                    border: none;
+                    color: $color-27;
+                    padding: 1rem;
+                    font-family: inherit;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+// LOAN APPLICATION TAB
+.main {
+    &__loan-overview {
+        margin-top: 2rem;
+        padding: 2rem 5rem;
+
+        .loan-types {
+            display: flex;
+            width: 65rem;
+            max-width: 100%;
+        }
+
+        a:first-child {
+            margin-right: 1.3rem;
+        }
+
+        a {
+            border: 1px solid #E4E4E4;
+            border-radius: 10px;
+            padding: 3rem 2rem;
+
+            .h3-db {
+                color: $color-4;
+                margin-bottom: 1rem;
+            }
+
+            p {
+                color: $color-3;
+            }
+        }
+
+        a.active {
+            border: 1px solid $color-1;
+        }
+
+        .btn {
+            width: auto;
+            margin-top: 3rem;
+        }
+    }
+}
+
+// HISTORY TAB 
+.main {
+    .main__loan-history.history {
+        .middle {
+            background-color: $color-11;
+            height: 48rem;
+            margin-top: -3rem;
+            border: 1px solid #011F2B26;
+        }
+    }
+}
+
+// SETTINGS TAB
+.main {
+    .success {
+        padding: 0 5rem;
+        width: 75rem;
+        max-width: 100%;
+
+        div {
+            color: #149D69;
+            background-color: #13D93424;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+        }
+    }
+
+    &__form {
+        padding: 2rem 5rem;
+        width: 75rem;
+        max-width: 100%;
+
+        .input-groups {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem 5rem;
+        }
+
+        .input-group {
+            margin-bottom: 2rem;
+        }
+
+        label {
+            display: block;
+            color: $color-3;
+            font-weight: 500;
+            margin-bottom: .6rem;
+        }
+
+        input {
+            border: 1px solid $color-23;
+            outline: none;
+            padding: 1.5rem 1rem;
+            border-radius: 8px;
+            width: 100%;
+            font-family: inherit;
+        }
+
+        .btn-blue {
+            margin-left: auto;
+            margin-top: 3rem;
+        }
+    }
+}
