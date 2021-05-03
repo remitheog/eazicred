@@ -52,7 +52,7 @@
                 </div>
     
                 <div class="main__middle">
-                    <h2 class="h2-db">Welcome <span>Micheal</span></h2>
+                    <h2 class="h2-db">Welcome <span class="account_name"></span></h2>
                     <p class="p2-db">Here's a quick summary of what's happening</p>
                 </div>
     
@@ -81,5 +81,9 @@
             </main>
         </div>
     </div>
+    <script>
+       let user=document.querySelector('.account_name');
+       user.textContent=`${localStorage.getItem('user')}`
+    </script>
 </body>
 </html>

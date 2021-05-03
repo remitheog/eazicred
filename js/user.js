@@ -72,20 +72,22 @@ form.onsubmit= e=> {
             body:JSON.stringify(db)
         }).then( res=> res.json())
         .then(info=>{
-            console.log(info)
-            localStorage.setItem('user','user auth')
+            console.log(info);
+            localStorage.setItem('user',firstName.value)
+            swal('Account Created','Your account has been created successfully, you will be redirected to your dashboard','success');
             setTimeout(()=>{
-                swal('Account Created','Your account has been created successfully','success');
-                window.location='./dashboard/home.html'
-            },2000)
-            console.log(db);
+               window.location='./dashboard/home.html'
+            },8000)
+           
         })
 
         
 }
 
 if(localStorage.getItem('user')) {
-    alert('user')
+    setTimeout(()=>{
+        
+    },6000)
 }
 
 
