@@ -1,9 +1,8 @@
-import axios from 'axios';
-
 import {
   USER_DATA,
   USER_TOKEN,
 } from '../../components/constants/local';
+import axiosInstance from '../../helpers/axios';
 import {
   LOGIN_ENDPOINT,
   REGISTER_ENDPOINT,
@@ -21,7 +20,6 @@ import {
   registerRequest,
   registerSuccess,
 } from './actions';
-import axiosInstance from "../../helpers/axios";
 
 export const loginUser = (data, historyCB) => (dispatch) => {
     dispatch(loginRequest())

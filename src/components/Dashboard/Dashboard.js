@@ -2,8 +2,7 @@ import React from 'react';
 
 import SideBar from './SideBar';
 
-const Dashboard = () => {
-    document.title = "Dashboard"
+const Dashboard = ({user}) => {
     return (
         <div className="dashboard">
             <div className="container-lg">
@@ -14,7 +13,7 @@ const Dashboard = () => {
                         <img src="assets/login-image.png" className="user-picture" alt="" />
                     </div>
                     <div className="main__middle">
-                        <h2 className="h2-db">Welcome <span className="account_name" /></h2>
+                        <h2 className="h2-db">Welcome <span className="account_name">{`${user.firstname} ${user.lastname}`}</span></h2>
                         <p className="p2-db">Here's a quick summary of what's happening</p>
                     </div>
                     <div className="main__user-overview">

@@ -7,11 +7,12 @@ import {
 } from 'react-router-dom';
 
 import About from './components/About';
+import DashboardContainer
+  from './components/containers/dashboard/DashboardContainer';
 import SettingsContainer
   from './components/containers/dashboard/SettingsContainer';
 import LoginContainer from './components/containers/LoginContainer';
 import RegisterContainer from './components/containers/RegisterContainer';
-import Dashboard from './components/Dashboard/Dashboard';
 import History from './components/Dashboard/History';
 import LoanApplication from './components/Dashboard/LoanApplication';
 import Profile from './components/Dashboard/Profile';
@@ -56,7 +57,7 @@ function App() {
                 <Route exact path={HOME_URL} component={Home}/>
                 <Route path={SUPPORT_URL} component={Support}/>
                 <Route path={FAQS_URL} component={Faqs}/>
-                <ProtectedRoute exact path={DASHBOARD_URL} component={Dashboard}/>
+                <ProtectedRoute exact path={DASHBOARD_URL} component={DashboardContainer}/>
                 <ProtectedRoute path={DASHBOARD_PROFILE_URL} component={Profile}/>
                 <ProtectedRoute path={DASHBOARD_SETTING_URL} component={SettingsContainer}/>
                 <ProtectedRoute path={DASHBOARD_LOAN_APPLICATION_URL} component={LoanApplication}/>

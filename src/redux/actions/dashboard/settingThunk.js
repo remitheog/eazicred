@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 import { CHANGE_PASSWORD_ENDPOINT } from '../../../routes/endpoints';
 import {
   updateProfileFailure,

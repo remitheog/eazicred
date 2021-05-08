@@ -4,5 +4,10 @@ export const initialStates = {
         loading: false,
         error: null,
         data: null
+    },
+    user:{
+        data: {},
+        loading: false,
+        error: null
     }
 }
