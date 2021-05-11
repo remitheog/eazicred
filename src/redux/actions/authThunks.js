@@ -25,14 +25,12 @@ export const loginUser = (data, historyCB) => (dispatch) => {
     dispatch(loginRequest())
     axiosInstance.post(LOGIN_ENDPOINT, {...data})
         .then(res => {
-            console.log(res)
             dispatch(loginSuccess(res.data.data))
             localStorage.setItem(USER_TOKEN, JSON.stringify(res.data.data.token))
             localStorage.setItem(USER_DATA, JSON.stringify(res.data.data.user))
             historyCB.push(DASHBOARD_URL)
         })
         .catch(err => {
-            console.log(err)
             dispatch(loginFailed(err))
             historyCB.push(LOGIN_URL)
         })

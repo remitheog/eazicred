@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import { USER_TOKEN } from '../components/constants/local';
+import { isAuthenticated } from './utilities';
 
 const headers = {
     "Content-Type": "application/json",
@@ -9,15 +10,15 @@ const headers = {
 
 const token = JSON.parse(localStorage.getItem(USER_TOKEN))
 
-if(token){
+if(token || isAuthenticated()){
     headers['Authorization'] = `Bearer ${token}`
 }
 
 const axiosInstance = axios.create({
-    baseURL: 'http://66.228.56.214:3000',
+    baseURL: 'https://api.eazicred.com',
     headers,
-    timeout: 50000,
-    timeoutErrorMessage: "Request timeout"
+    // timeout: 30000,
+    timeoutErrorMessage: "timeout()"
 })
 
 export default axiosInstance

@@ -2,6 +2,7 @@ import {
   GET_USER_FAILURE,
   GET_USER_REQUEST,
   GET_USER_SUCCESS,
+  LOGOUT_REQUEST,
 } from '../actions/types';
 import { initialStates } from '../states';
 
@@ -22,7 +23,13 @@ export const userReducer = (state = initialStates.user, action) => {
             return {
                 ...state,
                 loading: false,
+                data: null,
                 error: action.error
+            }
+        case LOGOUT_REQUEST:
+            return {
+                ...state,
+                data: null,
             }
         default:
             return state

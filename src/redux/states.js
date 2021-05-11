@@ -9,5 +9,23 @@ export const initialStates = {
         data: {},
         loading: false,
         error: null
+    },
+    sme:{
+        data: {},
+        loading: false,
+        error: null
+    },
+    payday:{
+        data: {},
+        loading: false,
+        error: null
+    },
+    notify:{
+        show: false,
+        message:{
+            type:"",
+            message:"",
+            show: false
+        }
     }
 }

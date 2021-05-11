@@ -21,6 +21,7 @@ const Home = () => {
             <Eligibility/>
             <Testimonial/>
             <LoanCalculator/>
+            <OnPageSignUp/>
         </React.Fragment>
     )
 }

@@ -1,10 +1,10 @@
+import axiosInstance from '../../../helpers/axios';
 import { CHANGE_PASSWORD_ENDPOINT } from '../../../routes/endpoints';
 import {
-  updateProfileFailure,
+  showMessage,
   updateSettingRequest,
   updateSettingSuccess,
 } from '../actions';
-import axiosInstance from "../../../helpers/axios";
 
 export const changePassword = (data, userID) => dispatch => {
     dispatch(updateSettingRequest())
@@ -12,9 +12,10 @@ export const changePassword = (data, userID) => dispatch => {
         .then(res => {
             console.log(res)
             dispatch(updateSettingSuccess())
+            dispatch(showMessage({message: "Password Changed successfully", type: 'success'}))
         })
         .catch(err => {
             console.log(err)
-            dispatch(updateProfileFailure())
+            dispatch(showMessage({message: "Password Changed successfully", type: 'error'}))
         })
 }

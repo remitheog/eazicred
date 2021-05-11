@@ -10,7 +10,10 @@ import Setting from '../../Dashboard/Setting';
 
 const SettingsContainer = () => {
     document.title = 'Manage your account settings'
-    const [field, setField] = React.useState({oldPassword: "", newPassword: "", confirmPassword: ""})
+    const [field, setField] = React.useState({
+        "newpassword": "",
+        "oldpassword": ""
+    })
     const userID = useSelector(state => state.auth.data.user.id)
     const handleChange = ({target: {name, value}}) => {
         setField({...field, [name]:value})

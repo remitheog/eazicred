@@ -1,4 +1,6 @@
 import React from 'react';
+
+import MessageAlert from './MessageAlert';
 import SideBar from './SideBar';
 
 const Profile = () => {
@@ -16,11 +18,7 @@ const Profile = () => {
                         <h2 className="h2-db">Profile</h2>
                         <p className="p2-db">Manage your Profile</p>
                     </div>
-                    <div className="success">
-                        <div>
-                            <p>Profile Updated Successfully</p>
-                        </div>
-                    </div>
+                    <MessageAlert/>
                     <form className="main__form">
                         <div className="input-groups">
                             <div className="input-group">

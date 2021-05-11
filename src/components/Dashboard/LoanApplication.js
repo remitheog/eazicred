@@ -1,8 +1,25 @@
 import React from 'react';
 
+import {
+  Link,
+  useHistory,
+} from 'react-router-dom';
+
+import {
+  DASHBOARD_CONSUMER_LOAN_APPLICATION_URL,
+  DASHBOARD_SME_LOAN_APPLICATION_URL,
+  DASHBOARD_URL,
+} from '../../routes/paths';
 import SideBar from './SideBar';
 
 const LoanApplication = () => {
+    const handleMouseOver = e => {
+        e.target.classList.add("active")
+    }
+    const handleMouseOut = e => {
+        e.target.classList.remove("active")
+    }
+    const history = useHistory()
     return (
         <div className="dashboard">
             <div className="container-lg">
@@ -13,24 +30,24 @@ const LoanApplication = () => {
                         <img src="assets/login-image.png" className="user-picture" alt="" />
                     </div>
                     <div className="main__middle">
-                        <span className="go-back">&lt; Go Back</span>
+                        <span onClick={() => history.push(DASHBOARD_URL)} style={{cursor: "pointer"}} className="go-back">&lt; Go Back</span>
                         <h2 className="h2-db">Apply For Loan</h2>
                         <p className="p2-db">Select a loan type from the options below to continue</p>
                     </div>
                     <div className="main__loan-overview">
                         <div className="loan-types">
-                            <a href className="consumer-loan active">
+                            <Link onMouseOut={handleMouseOut} onMouseOver={handleMouseOver} to={DASHBOARD_CONSUMER_LOAN_APPLICATION_URL} className="consumer-loan">
                                 <div>
                                     <h3 className="h3-db">Consumer Loans</h3>
                                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
                                 </div>
-                            </a>
-                            <a href className="sme-loan">
+                            </Link>
+                            <Link onMouseOut={handleMouseOut}  onMouseOver={handleMouseOver} to={DASHBOARD_SME_LOAN_APPLICATION_URL} className="sme-loan">
                                 <div>
                                     <h3 className="h3-db">SME Loans</h3>
                                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
                                 </div>
-                            </a>
+                            </Link>
                         </div>
                         <button className="btn btn-blue">Start My Application</button>
                     </div>

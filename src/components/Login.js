@@ -41,7 +41,9 @@ const Login = ({field, handleChange, handleSubmit}) => {
                             </div>
                             <p className="text-align-right">Forgot Password?</p>
                             <input type="submit" value="Login" className="btn btn-blue" id="blue"/>
-                            <p>Don't Have An Account? <Link to={REGISTER_URL} className="primary-color">Register</Link></p>
+                            <p>Don't Have An Account?
+                                <Link to={REGISTER_URL} className="primary-color">Register</Link>
+                            </p>
                         </form>
                     </div>
                 </div>
