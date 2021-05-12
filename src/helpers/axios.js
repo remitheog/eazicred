@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { USER_TOKEN } from '../components/constants/local';
+import { USER_TOKEN } from '../constants/local';
 import { isAuthenticated } from './utilities';
 
 const headers = {

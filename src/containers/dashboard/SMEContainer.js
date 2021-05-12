@@ -1,14 +1,18 @@
 import React from 'react';
 
-import { useDispatch } from 'react-redux';
+import {
+  useDispatch,
+  useSelector,
+} from 'react-redux';
 
-import applySmeLoan from '../../../redux/actions/smeThunk';
-import SmeLoan from '../../Dashboard/SmeLoan';
-import SmeForm1 from '../../Dashboard/steps/SMEForm1';
+import SmeLoan from '../../components/Dashboard/SmeLoan';
+import SmeForm1 from '../../components/Dashboard/steps/SMEForm1';
+import applySmeLoan from '../../redux/actions/smeThunk';
 
 const SMEContainer = () => {
+    const userID = useSelector(state => state.user.data.id)
     const [field, setField] = React.useState({
-        "user_id": "",
+        "user_id": userID,
         "business_name": "",
         "business_address": "",
         "RC_number": "",
@@ -17,12 +21,12 @@ const SMEContainer = () => {
         "purpose_of_loan": "",
     })
     const [step, setStep] = React.useState(1)
-    const nextStep = () => {
-        setStep(step + 1)
-    }
-    const prevStep = () => {
-        setStep(step - 1)
-    }
+    // const nextStep = () => {
+    //     setStep(step + 1)
+    // }
+    // const prevStep = () => {
+    //     setStep(step - 1)
+    // }
 
     const handleChange = (e) => {
         setField({...field, [e.target.name]: e.target.value})
@@ -42,12 +46,13 @@ const SMEContainer = () => {
             // case 2:
             //     return <SmeForm2 field={field} handleChange={handleChange} prevStep={prevStep}/>
             default:
-                return <SmeForm1 field={field} handleChange={handleChange}/>
+                return <SmeForm1 showMsg={showMsg} field={field} handleChange={handleChange}/>
         }
     }
-
+    const showNotification = useSelector(state => state.notify.show)
+    const showMsg = useSelector(state => state.notify.message.show)
     return (
-        <SmeLoan switchForm={switchForm} step={step} handleSubmit={handleSubmit}/>
+        <SmeLoan showNotification={showNotification} switchForm={switchForm} step={step} handleSubmit={handleSubmit}/>
     );
 }
 

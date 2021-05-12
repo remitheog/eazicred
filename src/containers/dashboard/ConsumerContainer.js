@@ -1,13 +1,16 @@
 import React from 'react';
 
-import { useDispatch } from 'react-redux';
+import {
+  useDispatch,
+  useSelector,
+} from 'react-redux';
 
-import applyPaydayLoan from '../../../redux/actions/paydayThunk';
-import Consumer from '../../Dashboard/Consumer';
-import FormStep1 from '../../Dashboard/steps/FormStep1';
-import FormStep2 from '../../Dashboard/steps/FormStep2';
-import FormStep3 from '../../Dashboard/steps/FormStep3';
-import FormStep4 from '../../Dashboard/steps/FormStep4';
+import Consumer from '../../components/Dashboard/Consumer';
+import FormStep1 from '../../components/Dashboard/steps/FormStep1';
+import FormStep2 from '../../components/Dashboard/steps/FormStep2';
+import FormStep3 from '../../components/Dashboard/steps/FormStep3';
+import FormStep4 from '../../components/Dashboard/steps/FormStep4';
+import applyPaydayLoan from '../../redux/actions/paydayThunk';
 
 const ConsumerContainer = () => {
     const [field, setField] = React.useState({
@@ -74,28 +77,35 @@ const ConsumerContainer = () => {
     const handleChange = (e) => {
         setField({...field, [e.target.name]: e.target.value})
     }
+    const showMsg = useSelector(state => state.notify.message.show)
+    const handleShowMsg = () => {
+        setStep(4)
+        return showMsg
+    }
+
     document.title = "Eazicred - Consumer Loan"
     const switchForm = () => {
         switch (step) {
             case 1:
-                return <FormStep1 field={field} handleChange={handleChange} nextStep={nextStep} prevStep={prevStep}/>
+                return <FormStep1 field={field} handleChange={handleChange} nextStep={nextStep}/>
             case 2:
                 return <FormStep2 field={field} handleChange={handleChange} nextStep={nextStep} prevStep={prevStep}/>
             case 3:
                 return <FormStep3 field={field} handleChange={handleChange} nextStep={nextStep} prevStep={prevStep}/>
             case 4:
-                return <FormStep4 field={field} handleChange={handleChange} nextStep={nextStep} prevStep={prevStep}/>
+                return <FormStep4 showMsg={handleShowMsg} field={field} handleChange={handleChange} prevStep={prevStep}/>
+            default:
+                return <FormStep1 nextStep={nextStep}  field={field} handleChange={handleChange}/>
         }
     }
     const dispatch = useDispatch()
-
     const handleSubmit = (e) => {
         e.preventDefault()
         dispatch(applyPaydayLoan(field))
     }
-
+    const showNotification = useSelector(state => state.notify.show)
     return (
-        <Consumer handleSubmit={handleSubmit} switchForm={switchForm} step={step}/>
+        <Consumer showNotification={showNotification} handleSubmit={handleSubmit} switchForm={switchForm} step={step}/>
     );
 }
 

@@ -5,19 +5,19 @@ import {
   useSelector,
 } from 'react-redux';
 
-import { hideNotification } from '../../redux/actions/actions';
+import { hideMessage } from '../../redux/actions/actions';
 
 const MessageAlert = () => {
-    const message = useSelector(state => state.notify.message)
+    const message = useSelector(state => {
+        return state.notify.message;
+    })
     const dispatch = useDispatch()
     React.useEffect(()=>{
-        setTimeout(()=>dispatch(hideNotification()), 3000)
+        setTimeout(()=>dispatch(hideMessage()), 5000)
     },[])
     return (
         <div className={message["type"]}>
-            <div>
-                <p>{message["message"]}</p>
-            </div>
+            <div><p>{message["message"]}</p></div>
         </div>
     );
 }

@@ -1,7 +1,7 @@
 import {
   USER_DATA,
   USER_TOKEN,
-} from '../../components/constants/local';
+} from '../../constants/local';
 import axiosInstance from '../../helpers/axios';
 import {
   LOGIN_ENDPOINT,

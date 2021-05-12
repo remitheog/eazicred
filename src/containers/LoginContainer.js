@@ -6,9 +6,9 @@ import {
 } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { loginUser } from '../../redux/actions/authThunks';
-import { DASHBOARD_URL } from '../../routes/paths';
-import Login from '../Login';
+import Login from '../components/Login';
+import { loginUser } from '../redux/actions/authThunks';
+import { DASHBOARD_URL } from '../routes/paths';
 
 const LoginContainer = () => {
     const history = useHistory()

@@ -1,16 +1,14 @@
 import React from 'react';
 
-const FormStep4 = ({prevStep, handleChange, field}) => {
+import MessageAlert from '../MessageAlert';
+
+const FormStep4 = ({showMsg, prevStep, handleChange, field}) => {
     return (
         <React.Fragment>
             <span>Step 4 / 4</span>
             <h3>Loan &amp; Verification</h3>
             <p>Fill in the required information and upload documents</p>
             <div className="input-groups">
-                {/*<div className="input-group">*/}
-                {/*    <label htmlFor>Purpose Of Loan</label>*/}
-                {/*    <input value={field.purpose_of_loan} onChange={handleChange}  type="text" placeholder="Enter reason" />*/}
-                {/*</div>*/}
                 <div className="input-group">
                     <label htmlFor="existing_loan">Do you have any existing loan?</label>
                     <input value={field.existing_loan} onChange={handleChange}  type="text" name="existing_loan" id="existing_loan" placeholder="Yes or No" />
@@ -92,10 +90,13 @@ const FormStep4 = ({prevStep, handleChange, field}) => {
                     <input value={field.utility_bill} onChange={handleChange} name={"utility_bill"} type="file" id="utility_bill" />
                 </div>
             </div>
-            <div className="form-btns">
-                <input onClick={() => prevStep()} type="button" className="btn btn-blue btn-transparent" value="Back" />
-                <input type="submit" className="btn btn-blue" value="Submit" />
-            </div>
+            {!showMsg() && (
+                <div className="form-btns">
+                    <input onClick={() => prevStep()} type="button" className="btn btn-blue btn-transparent" value="Back" />
+                    <input type="submit" className="btn btn-blue" value="Submit" />
+                </div>
+            )}
+            {showMsg() && <MessageAlert/>}
         </React.Fragment>
     );
 }

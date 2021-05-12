@@ -3,8 +3,7 @@ import React from 'react';
 import MessageAlert from './MessageAlert';
 import SideBar from './SideBar';
 
-const Profile = () => {
-    document.title = "Profile"
+const Profile = ({state, showMsg, field, handleChange, handleSubmit}) => {
     return (
         <div className="dashboard">
             <div className="container-lg">
@@ -18,23 +17,19 @@ const Profile = () => {
                         <h2 className="h2-db">Profile</h2>
                         <p className="p2-db">Manage your Profile</p>
                     </div>
-                    <MessageAlert/>
-                    <form className="main__form">
+                    {showMsg && <MessageAlert/>}
+                    <form className="main__form" onSubmit={handleSubmit}>
                         <div className="input-groups">
                             <div className="input-group">
                                 <label htmlFor="firstname">First Name</label>
-                                <input id="firstname" type="text" placeholder="John" />
+                                <input name="firstname" value={field.firstname} onChange={handleChange} id="firstname" type="text" placeholder="John" />
                             </div>
                             <div className="input-group">
                                 <label htmlFor="lastname">Last Name</label>
-                                <input id="lastname" type="text" placeholder="Doe" />
-                            </div>
-                            <div className="input-group">
-                                <label htmlFor="email">Email Address</label>
-                                <input id="email" type="email" placeholder="example@eazycred.com" />
+                                <input name="lastname" value={field.lastname} onChange={handleChange} id="lastname" type="text" placeholder="Doe" />
                             </div>
                         </div>
-                        <button className="btn btn-blue">Update</button>
+                        <button disabled={state.loading} type={"submit"} className="btn btn-blue">Update</button>
                     </form>
                 </main>
             </div>

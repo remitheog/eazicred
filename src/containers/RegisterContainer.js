@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 
 import {
@@ -6,9 +7,9 @@ import {
 } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { registerUser } from '../../redux/actions/authThunks';
-import { DASHBOARD_URL } from '../../routes/paths';
-import Register from '../Register';
+import Register from '../components/Register';
+import { registerUser } from '../redux/actions/authThunks';
+import { DASHBOARD_URL } from '../routes/paths';
 
 const RegisterContainer = () => {
     document.title = "Eazicred - Create Account"

@@ -5,8 +5,8 @@ import {
   useSelector,
 } from 'react-redux';
 
-import { changePassword } from '../../../redux/actions/dashboard/settingThunk';
-import Setting from '../../Dashboard/Setting';
+import Setting from '../../components/Dashboard/Setting';
+import { changePassword } from '../../redux/actions/dashboard/settingThunk';
 
 const SettingsContainer = () => {
     document.title = 'Manage your account settings'
@@ -15,6 +15,7 @@ const SettingsContainer = () => {
         "oldpassword": ""
     })
     const userID = useSelector(state => state.auth.data.user.id)
+    const showMsg = useSelector(state => state.notify.message.show)
     const handleChange = ({target: {name, value}}) => {
         setField({...field, [name]:value})
     }
@@ -26,7 +27,7 @@ const SettingsContainer = () => {
     }
 
     return (
-        <Setting field={field} handleChange={handleChange} handleSubmit={handleSubmit}/>
+        <Setting showMsg={showMsg} field={field} handleChange={handleChange} handleSubmit={handleSubmit}/>
     );
 }
 

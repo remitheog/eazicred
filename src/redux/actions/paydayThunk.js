@@ -1,6 +1,9 @@
 import axiosInstance from '../../helpers/axios';
 import { PAYDAY_LOAN_ENDPOINT } from '../../routes/endpoints';
-import { showNotification } from './actions';
+import {
+  showMessage,
+  showNotification,
+} from './actions';
 import {
   applyPaydayFailure,
   applyPaydayRequest,
@@ -16,7 +19,7 @@ export const applyPaydayLoan = data => dispatch => {
         })
         .catch(err => {
             dispatch(applyPaydayFailure(err))
-            console.log(err)
+            dispatch(showMessage({message: "Please all fields are required", type: 'error'}))
         })
 }
 export default applyPaydayLoan

@@ -13,6 +13,7 @@ import {
 import SideBar from './SideBar';
 
 const LoanApplication = () => {
+    document.title = "Loan Application"
     const handleMouseOver = e => {
         e.target.classList.add("active")
     }

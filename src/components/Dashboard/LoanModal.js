@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 
 import { useDispatch } from 'react-redux';
@@ -6,6 +7,9 @@ import { hideNotification } from '../../redux/actions/actions';
 
 const LoanModal = () => {
     const dispatch = useDispatch()
+    React.useEffect(() => {
+        setTimeout(() => dispatch(hideNotification()), 5000)
+    }, [])
     return (
         <div className="modal-overlay">
             <div className="modal">

@@ -9,9 +9,10 @@ import {
   DASHBOARD_LOAN_APPLICATION_URL,
   DASHBOARD_URL,
 } from '../../routes/paths';
+import LoanModal from './LoanModal';
 import SideBar from './SideBar';
 
-const SmeLoan = ({step, switchForm, handleSubmit}) => {
+const SmeLoan = ({showNotification, step, switchForm, handleSubmit}) => {
     document.title = "Eazicred - SME Loan"
     const history = useHistory()
     return (
@@ -52,6 +53,7 @@ const SmeLoan = ({step, switchForm, handleSubmit}) => {
                             <form onSubmit={handleSubmit}>
                                 {switchForm()}
                             </form>
+                            {showNotification && <LoanModal/>}
                         </div>
                     </div>
                 </main>

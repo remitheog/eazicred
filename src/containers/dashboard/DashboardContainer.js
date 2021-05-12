@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 
 import {
@@ -5,9 +6,9 @@ import {
   useSelector,
 } from 'react-redux';
 
-import { getUser } from '../../../redux/actions/dashboard/userThunk';
-import Dashboard from '../../Dashboard/Dashboard';
-import Loader from '../../Loader';
+import Dashboard from '../../components/Dashboard/Dashboard';
+import Loader from '../../components/Loader';
+import { getUser } from '../../redux/actions/dashboard/userThunk';
 
 const DashboardContainer = () => {
     const user = useSelector(state => state.user)

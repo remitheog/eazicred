@@ -1,7 +1,7 @@
 import {
   USER_DATA,
   USER_TOKEN,
-} from '../../components/constants/local';
+} from '../../constants/local';
 import {
   LOGIN_FAILED,
   LOGIN_REQUEST,

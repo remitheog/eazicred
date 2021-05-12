@@ -9,9 +9,10 @@ import {
   DASHBOARD_LOAN_APPLICATION_URL,
   HOME_URL,
 } from '../../routes/paths';
+import LoanModal from './LoanModal';
 import SideBar from './SideBar';
 
-const Consumer = ({ switchForm, step, handleSubmit}) => {
+const Consumer = ({showNotification, switchForm, step, handleSubmit}) => {
 
     const history = useHistory()
     return (
@@ -27,14 +28,12 @@ const Consumer = ({ switchForm, step, handleSubmit}) => {
                         <Link to={HOME_URL} className="main__logo">EaziCred</Link>
                         <img src="assets/login-image.png" className="user-picture" alt=""/>
                     </div>
-
                     <div className="main__middle">
                         <span onClick={() => history.push(DASHBOARD_LOAN_APPLICATION_URL)} style={{cursor: "pointer"}}
                               className="go-back">&lt; Go Back</span>
                         <h2 className="h2-db">Payday / Emergency Loan</h2>
                         <p className="p2-db">Tell us about yourself by completing the form below</p>
                     </div>
-
                     <div className="main__loan">
                         <div className="main__loan--steps">
                             <div>
@@ -76,11 +75,11 @@ const Consumer = ({ switchForm, step, handleSubmit}) => {
                                 </div>
                             </div>
                         </div>
-
                         <div className="main__loan--data">
                             <form onSubmit={handleSubmit}>
                                 {switchForm()}
                             </form>
+                            {showNotification && <LoanModal/>}
                         </div>
                     </div>
                 </main>

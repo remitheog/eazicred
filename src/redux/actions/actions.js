@@ -54,8 +54,8 @@ export const updateSettingSuccess = (payload) => {
     return {type: UPDATE_SETTING_SUCCESS, payload}
 }
 
-export const updateSettingFailure = (payload) => {
-    return {type: UPDATE_SETTING_FAILURE, payload}
+export const updateSettingFailure = (error) => {
+    return {type: UPDATE_SETTING_FAILURE, error}
 }
 
 export const logoutRequest = () => {

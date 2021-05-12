@@ -20,6 +20,16 @@ export const initialStates = {
         loading: false,
         error: null
     },
+    setting:{
+        data: {},
+        loading: false,
+        error: null
+    },
+    profile:{
+        data: {},
+        loading: false,
+        error: null
+    },
     notify:{
         show: false,
         message:{

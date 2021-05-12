@@ -1,6 +1,8 @@
 import React from 'react';
 
-const SmeForm1 = ({field, handleChange}) => {
+import MessageAlert from '../MessageAlert';
+
+const SmeForm1 = ({showMsg, field, handleChange}) => {
     return (
         <React.Fragment>
             <span>Step 1 / 1</span>
@@ -32,7 +34,8 @@ const SmeForm1 = ({field, handleChange}) => {
                     <input value={field.purpose_of_loan} onChange={handleChange} type="text" name="purpose_of_loan" id="purpose_of_loan" placeholder="Purpose of Loan" />
                 </div>
             </div>
-            <input type="submit" className="btn btn-blue" value="Submit" />
+            {showMsg && <MessageAlert/>}
+            {!showMsg && <input type="submit" className="btn btn-blue" value="Submit" />}
         </React.Fragment>
     );
 }

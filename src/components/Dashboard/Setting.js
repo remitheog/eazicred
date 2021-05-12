@@ -3,7 +3,7 @@ import React from 'react';
 import MessageAlert from './MessageAlert';
 import SideBar from './SideBar';
 
-const Setting = ({field, handleChange, handleSubmit}) => {
+const Setting = ({field, handleChange, handleSubmit, showMsg}) => {
     return (
         <div className="dashboard">
             <div className="container-lg">
@@ -17,7 +17,7 @@ const Setting = ({field, handleChange, handleSubmit}) => {
                         <h2 className="h2-db">Account Settings</h2>
                         <p className="p2-db">Change basic setting in your account</p>
                     </div>
-                    <MessageAlert/>
+                    {showMsg && <MessageAlert/>}
                     <form className="main__form" onSubmit={handleSubmit}>
                         <div className="input-groups">
                             <div className="input-group">
