@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 
 import {
@@ -7,15 +8,15 @@ import {
 
 import { hideMessage } from '../../redux/actions/actions';
 
-const MessageAlert = () => {
+const MessageAlert = (props) => {
     const message = useSelector(state => {
-        return state.notify.message;
+        return state["notify"].message;
     })
     const dispatch = useDispatch()
     React.useEffect(()=>{
         setTimeout(()=>dispatch(hideMessage()), 5000)
     },[])
-    return (
+    return props.children || (
         <div className={message["type"]}>
             <div><p>{message["message"]}</p></div>
         </div>

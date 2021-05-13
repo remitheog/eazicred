@@ -6,11 +6,9 @@ import { paydayLoanReducer } from './payday';
 import { profileReducer } from './profile';
 import { settingReducer } from './setting';
 import { smeLoanReducer } from './sme';
-import { userReducer } from './user';
 
 const rootReducer = combineReducers({
     auth: authReducer,
-    user: userReducer,
     sme: smeLoanReducer,
     payday: paydayLoanReducer,
     setting: settingReducer,

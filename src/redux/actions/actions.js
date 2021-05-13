@@ -1,4 +1,7 @@
 import {
+  GET_USER_FAILURE,
+  GET_USER_REQUEST,
+  GET_USER_SUCCESS,
   HIDE_MESSAGE,
   HIDE_NOTIFICATION,
   LOGIN_FAILED,
@@ -58,14 +61,26 @@ export const updateSettingFailure = (error) => {
     return {type: UPDATE_SETTING_FAILURE, error}
 }
 
+export const getUserRequest = () => {
+    return {type: GET_USER_REQUEST}
+}
+
+export const getUserSuccess = (payload) => {
+    return {type: GET_USER_SUCCESS, payload}
+}
+
+export const getUserFailure = error => {
+    return {type: GET_USER_FAILURE, error}
+}
+
 export const logoutRequest = () => {
-    return {type : LOGOUT_REQUEST}
+    return {type: LOGOUT_REQUEST}
 }
 export const loginRequest = () => {
-    return {type : LOGIN_REQUEST}
+    return {type: LOGIN_REQUEST}
 }
 export const loginSuccess = (payload) => {
-    return {type : LOGIN_SUCCESS, payload}
+    return {type: LOGIN_SUCCESS, payload}
 }
 export const loginFailed = (error) => {
     return {type : LOGIN_FAILED, error}

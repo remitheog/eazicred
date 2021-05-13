@@ -7,20 +7,21 @@ import {
 } from 'react-redux';
 
 import Dashboard from '../../components/Dashboard/Dashboard';
-import Loader from '../../components/Loader';
-import { getUser } from '../../redux/actions/dashboard/userThunk';
+import { getUser } from '../../redux/actions/authThunks';
 
 const DashboardContainer = () => {
-    const user = useSelector(state => state.user)
-    const userID = useSelector(state => state.auth.data.user.id)
-    document.title = `${user?user.firstname:""} Dashboard`.toUpperCase()
     const dispatch = useDispatch()
-
     React.useEffect(() => {
-        dispatch(getUser(userID))
+        dispatch(getUser())
     }, [])
+
+    const user = useSelector(state => {
+        const {auth:{user}} = state;
+        return user;
+    })
+    document.title = `${user?user.firstname:""} Dashboard`.toUpperCase()
     return (
-        user.loading? <Loader/>:<Dashboard user={user.data}/>
+        <Dashboard user={user}/>
     );
 }
 

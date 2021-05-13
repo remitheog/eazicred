@@ -3,6 +3,9 @@ import {
   USER_TOKEN,
 } from '../../constants/local';
 import {
+  GET_USER_FAILURE,
+  GET_USER_REQUEST,
+  GET_USER_SUCCESS,
   LOGIN_FAILED,
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
@@ -15,10 +18,14 @@ import { initialStates } from '../states';
 
 export const authReducer = (state = initialStates.auth, action) => {
     switch (action.type){
+
+        case LOGIN_REQUEST:
+        case GET_USER_REQUEST:
         case REGISTER_REQUEST:
             return {
                 ...state,
-                loading: true, isAuthenticated: false
+                loading: true,
+                isAuthenticated: false
             }
         case REGISTER_SUCCESS:
             return {
@@ -26,40 +33,36 @@ export const authReducer = (state = initialStates.auth, action) => {
                 loading: false,
                 isAuthenticated: false,
             }
-        case REGISTER_FAILED:
-            return {
-                ...state,
-                loading: false,
-                isAuthenticated: false,
-                error: action.error
-            }
-        case LOGIN_REQUEST:
-            return {
-                ...state,
-                isAuthenticated: false,
-                loading: true
-            }
-
         case LOGIN_SUCCESS:
+            localStorage.setItem(USER_TOKEN, JSON.stringify(action.payload.token))
+            localStorage.setItem(USER_DATA, JSON.stringify(action.payload.user))
             return {
                 ...state,
+                ...action.payload,
                 isAuthenticated: true,
                 loading: false,
-                data: action.payload,
                 error: null
+            }
+        case GET_USER_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                user: action.payload,
+                isAuthenticated: true
             }
         case LOGIN_FAILED:
         case LOGOUT_REQUEST:
+        case REGISTER_FAILED:
+        case GET_USER_FAILURE:
             localStorage.removeItem(USER_TOKEN)
             localStorage.removeItem(USER_DATA)
             return {
                 ...state,
                 isAuthenticated: false,
                 loading: false,
-                data: null ,
+                user: null ,
                 error: action.error
             }
-
         default:
             return state
     }

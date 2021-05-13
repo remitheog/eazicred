@@ -10,11 +10,11 @@ const Testimonial = () => {
                     <div className="testimonials__list">
                         <div className="testimonial">
                             <div className="testimonial__user-profile">
-                                <img src="assets/george.png" alt="George Anderson"/>
-                                    <div>
-                                        <h6 className="h-6">George Anderson</h6>
-                                        <p>CEO Johnsons LTD</p>
-                                    </div>
+                                <img src={"assets/george.png"} alt="George Anderson"/>
+                                <div>
+                                    <h6 className="h-6">George Anderson</h6>
+                                    <p>CEO Johnson LTD</p>
+                                </div>
                             </div>
                             <div className="testimonial__text">
                                 <p>It is a long established fact that a reader will be distracted by the readable
@@ -31,11 +31,11 @@ const Testimonial = () => {
 
                         <div className="testimonial">
                             <div className="testimonial__user-profile">
-                                <img src="assets/george.png" alt="George Anderson"/>
-                                    <div>
-                                        <h6 className="h-6">George Anderson</h6>
-                                        <p>CEO Johnsons LTD</p>
-                                    </div>
+                                <img src={"assets/george.png"} alt="George Anderson"/>
+                                <div>
+                                    <h6 className="h-6">George Anderson</h6>
+                                    <p>CEO Johnson LTD</p>
+                                </div>
                             </div>
                             <div className="testimonial__text">
                                 <p>It is a long established fact that a reader will be distracted by the readable
@@ -62,11 +62,11 @@ const Testimonial = () => {
                                     content of a page when looking at its layout.</p>
                             </div>
                             <div className="user-profile">
-                                <img src="assets/christian.png" alt="George Anderson"/>
-                                    <div>
-                                        <h6 className="h-6">George Anderson</h6>
-                                        <p>CEO Johnsons LTD</p>
-                                    </div>
+                                <img src={"assets/christian.png"} alt="George Anderson"/>
+                                <div>
+                                    <h6 className="h-6">George Anderson</h6>
+                                    <p>CEO Johnson LTD</p>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -1,32 +1,30 @@
+import { USER_TOKEN } from '../constants/local';
+
 export const initialStates = {
     auth:{
         isAuthenticated: false,
         loading: false,
         error: null,
-        data: null
-    },
-    user:{
-        data: {},
-        loading: false,
-        error: null
+        user: null,
+        token: JSON.parse(localStorage.getItem(USER_TOKEN))
     },
     sme:{
-        data: {},
+        data: null,
         loading: false,
         error: null
     },
     payday:{
-        data: {},
+        data: null,
         loading: false,
         error: null
     },
     setting:{
-        data: {},
+        data: null,
         loading: false,
         error: null
     },
     profile:{
-        data: {},
+        data: null,
         loading: false,
         error: null
     },

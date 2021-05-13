@@ -10,7 +10,7 @@ import FormStep1 from '../../components/Dashboard/steps/FormStep1';
 import FormStep2 from '../../components/Dashboard/steps/FormStep2';
 import FormStep3 from '../../components/Dashboard/steps/FormStep3';
 import FormStep4 from '../../components/Dashboard/steps/FormStep4';
-import applyPaydayLoan from '../../redux/actions/paydayThunk';
+import { applyPaydayLoan } from '../../redux/actions/loanThunk';
 
 const ConsumerContainer = () => {
     const [field, setField] = React.useState({
