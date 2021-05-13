@@ -3,11 +3,10 @@ import React from 'react';
 const Loader = () => {
     return (
         <div>
-            <div class="preloader-wrapper">
-                <div class="preloader"></div>
+            <div className="preloader-wrapper">
+                <div className="preloader"/>
             </div>
-
-            <div class="main-content">What you want to show goes in here</div>
+            <div className="main-content">What you want to show goes in here</div>
         </div>
     );
 }

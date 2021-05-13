@@ -1,11 +1,12 @@
-import React from "react"
-import AboutHeader from "./AboutHeader";
-import Info from "./Info";
-import TeamGallery from "./TeamGallery";
-import OnPageSignUp from "../OnPageSignUp";
+import React from 'react';
+
+import OnPageSignUp from '../OnPageSignUp';
+import AboutHeader from './AboutHeader';
+import Info from './Info';
+import TeamGallery from './TeamGallery';
 
 const About = () => {
-    document.title = "EaziCred - Index Us"
+    document.title = "EaziCred - About Us"
     return (
         <React.Fragment>
             <AboutHeader/>

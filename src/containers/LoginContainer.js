@@ -4,19 +4,16 @@ import {
   useDispatch,
   useSelector,
 } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import Login from '../components/Login';
 import { loginUser } from '../redux/actions/authThunks';
 import { DASHBOARD_URL } from '../routes/paths';
 
 const LoginContainer = () => {
-    const history = useHistory()
-    const isAuth = useSelector(state => state.auth.isAuthenticated)
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+    const error = useSelector(state => state.notify.message)
     React.useEffect(() => {
-        if(isAuth){
-            history.push(DASHBOARD_URL)
-        }
     }, [])
     document.title = "Eazicred - Login to eazycred"
     const dispatch = useDispatch()
@@ -24,12 +21,14 @@ const LoginContainer = () => {
     const handleChange = ({target: {value, name}}) => setField({...field, [name]:value})
     const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch(loginUser(field, history))
+        dispatch(loginUser(field))
     }
 
-    return (
-        <Login handleSubmit={handleSubmit} handleChange={handleChange} field={field}/>
-    );
+    if(isAuthenticated){
+        return <Redirect to={DASHBOARD_URL}/>
+    }else{
+        return <Login error={error} handleSubmit={handleSubmit} handleChange={handleChange} field={field}/>
+    }
 }
 
 export default LoginContainer;

@@ -6,8 +6,9 @@ import {
   ABOUT_URL,
   LOGIN_URL,
 } from '../routes/paths';
+import MessageAlert from './Dashboard/MessageAlert';
 
-const Register = ({handleChange, field, handleSubmit}) => {
+const Register = ({handleChange, field, handleSubmit, error}) => {
     return (
         <div className="container-lg">
             <div className="account">
@@ -18,30 +19,44 @@ const Register = ({handleChange, field, handleSubmit}) => {
                         <form onSubmit={handleSubmit}>
                             <div className="input-group">
                                 <label htmlFor="email">Email Address</label>
-                                <input onChange={handleChange} name='email' value={field.email} id="email" type="email" placeholder="johndoe@eazycred.com" className="email" required/>
-                                <p><small className="msg">email error</small></p>
+                                <input onChange={handleChange} name='email' value={field.email} id="email" type="email"
+                                       placeholder="johndoe@eazycred.com" className="email" required/>
+                            </div>
+                            <div className="input-group">
+                                <label htmlFor="email">Phone Number</label>
+                                <input onChange={handleChange} name='phone' value={field.phone} id="phone" type="text"
+                                       placeholder="080 *** *** ***" className="phone" required/>
                             </div>
                             <div className="input-groups">
                                 <div className="input-group">
                                     <label htmlFor="firstname">First Name</label>
-                                    <input onChange={handleChange} name='firstname' value={field.firstname} id="firstname" type="text" placeholder="John" className="first_name" required/>
+                                    <input onChange={handleChange} name='firstname' value={field.firstname}
+                                           id="firstname" type="text" placeholder="John" className="first_name"
+                                           required/>
                                 </div>
                                 <div className="input-group">
                                     <label htmlFor="lastname">Last Name</label>
-                                    <input onChange={handleChange} name='lastname' value={field.lastname} id="lastname" type="text" placeholder="Doe" className="last_name" required/>
+                                    <input onChange={handleChange} name='lastname' value={field.lastname} id="lastname"
+                                           type="text" placeholder="Doe" className="last_name" required/>
                                 </div>
                             </div>
                             <div className="input-group">
                                 <label htmlFor="password">Password</label>
-                                <input onChange={handleChange} name='password' value={field.password} id="password" type="password" placeholder="***********" className="password" required/>
-                                <p><small className="pswrd_err">password error</small></p>
+                                <input onChange={handleChange} name='password' value={field.password} id="password"
+                                       type="password" placeholder="***********" className="password" required/>
                             </div>
                             <div className="input-group">
                                 <label htmlFor="code">Referral Code</label>
-                                <input onChange={handleChange} name='code' value={field.code} id="code" type="text" className="phone"/>
+                                <input onChange={handleChange} name='code' value={field.code} id="code" type="text"
+                                       className="phone"/>
                             </div>
-                            <p className="blue">Enter the referral code of the person who referred you to join EaziCred. Don't have a code - <Link to={ABOUT_URL} className="primary-color">Request one from us</Link></p>
-                            <input type="submit" value="Create Account" id='submit' className="btn btn-blue"/>
+                            <p className="blue">Enter the referral code of the person who referred you to join EaziCred.
+                                Don't have a code - <Link to={ABOUT_URL} className="primary-color">Request one from
+                                    us</Link></p>
+                            {!error.show &&
+                            <input type="submit" value="Create Account" id='submit' className="btn btn-blue"/>}
+                            {error.show && <MessageAlert><input type="button" value={error.message} disabled
+                                                                className="alert alert-red"/></MessageAlert>}
                             <p>Already Have An Account? <Link to={LOGIN_URL} className="primary-color">Log In</Link></p>
                         </form>
                     </div>

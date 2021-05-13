@@ -1,51 +1,61 @@
-import {
-  USER_DATA,
-  USER_TOKEN,
-} from '../../constants/local';
 import axiosInstance from '../../helpers/axios';
 import {
+  showError,
+  tokenConfig,
+} from '../../helpers/utilities';
+import {
+  GET_USER_ENDPOINT,
   LOGIN_ENDPOINT,
   REGISTER_ENDPOINT,
 } from '../../routes/endpoints';
 import {
-  DASHBOARD_URL,
-  LOGIN_URL,
-  REGISTER_URL,
-} from '../../routes/paths';
-import {
+  getUserFailure,
+  getUserRequest,
+  getUserSuccess,
   loginFailed,
   loginRequest,
   loginSuccess,
   registerFailed,
   registerRequest,
   registerSuccess,
+  showMessage,
 } from './actions';
 
-export const loginUser = (data, historyCB) => (dispatch) => {
-    dispatch(loginRequest())
-    axiosInstance.post(LOGIN_ENDPOINT, {...data})
+export const getUser = () => (dispatch, getState) => {
+    dispatch(getUserRequest())
+    const id = getState().auth.user.id
+
+    axiosInstance.get(`${GET_USER_ENDPOINT}${id}`, tokenConfig(getState))
         .then(res => {
-            dispatch(loginSuccess(res.data.data))
-            localStorage.setItem(USER_TOKEN, JSON.stringify(res.data.data.token))
-            localStorage.setItem(USER_DATA, JSON.stringify(res.data.data.user))
-            historyCB.push(DASHBOARD_URL)
+            dispatch(getUserSuccess(res.data.data))
         })
         .catch(err => {
-            dispatch(loginFailed(err))
-            historyCB.push(LOGIN_URL)
+            dispatch(getUserFailure(err))
         })
 }
 
-
-export const registerUser = (data, historyCB) => dispatch => {
-    dispatch(registerRequest())
-    axiosInstance.post(REGISTER_ENDPOINT, {...data})
+export const loginUser = (data) => (dispatch, getState) => {
+    dispatch(loginRequest())
+    const auth = getState().auth
+    axiosInstance.post(LOGIN_ENDPOINT, {...data}, tokenConfig(getState))
         .then(res => {
-            dispatch(registerSuccess(res.data.data))
-            historyCB.push(LOGIN_URL)
+            dispatch(loginSuccess(res.data.data))
         })
         .catch(err => {
-            dispatch(registerFailed(err))
-            historyCB.push(REGISTER_URL)
+            dispatch(loginFailed(showError(err, "Please check and try again")))
+            dispatch(showMessage({message: showError(err, auth.error), type: 'error'}))
+        })
+}
+
+export const registerUser = (data) => (dispatch, getState) => {
+    dispatch(registerRequest())
+    const auth = getState().auth
+    axiosInstance.post(REGISTER_ENDPOINT, {...data}, tokenConfig(getState))
+        .then(res => {
+            dispatch(registerSuccess(res.data.data))
+        })
+        .catch(err => {
+            dispatch(registerFailed(showError(err, "Please check and try again")))
+            dispatch(showMessage({message: showError(err, auth.error), type: 'error'}))
         })
 }

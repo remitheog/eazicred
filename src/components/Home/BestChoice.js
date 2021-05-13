@@ -1,4 +1,11 @@
-import React from "react";
+import React from 'react';
+
+import { Link } from 'react-router-dom';
+
+import {
+  ABOUT_URL,
+  DASHBOARD_LOAN_APPLICATION_URL,
+} from '../../routes/paths';
 
 const BestChoice = () => {
     return (
@@ -14,12 +21,12 @@ const BestChoice = () => {
                             disbursement of funds to repayment, we make it an EAZI experience for you</p>
 
                         <div>
-                            <a href="" className="btn btn-blue">Apply For A Loan</a>
-                            <a href="" className="btn btn-dark">Learn More</a>
+                            <Link to={DASHBOARD_LOAN_APPLICATION_URL} className="btn btn-blue">Apply For A Loan</Link>
+                            <Link to={ABOUT_URL} className="btn btn-dark">Learn More</Link>
                         </div>
                     </div>
                     <div className="choice__image-box">
-                        <img src="assets/choice-img.png" alt="a guy who is suprised"/>
+                        <img src={"assets/choice-img.png"} alt="a guy who is surprised"/>
                     </div>
                 </div>
             </div>

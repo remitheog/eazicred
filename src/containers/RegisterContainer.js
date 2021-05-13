@@ -5,7 +5,7 @@ import {
   useDispatch,
   useSelector,
 } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import Register from '../components/Register';
 import { registerUser } from '../redux/actions/authThunks';
@@ -13,7 +13,7 @@ import { DASHBOARD_URL } from '../routes/paths';
 
 const RegisterContainer = () => {
     document.title = "Eazicred - Create Account"
-    const history = useHistory()
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
     const [field, setField] = React.useState({
         "email": "",
         "firstname": "",
@@ -22,22 +22,25 @@ const RegisterContainer = () => {
         "code": "",
         "password": ""
     })
+    const error = useSelector(state => state.notify.message)
     const dispatch = useDispatch()
-    const handleChange = ({target}) => setField({...field, [target.name]:target.value})
-    const isAuth = useSelector(state => state.auth.isAuthenticated)
+
+    const handleChange = ({target}) => {
+        setField({...field, [target.name]: target.value})
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch(registerUser(field, history))
+        dispatch(registerUser(field))
     }
-    React.useEffect(() => {
-        if(isAuth){
-            history.push(DASHBOARD_URL)
-        }
-    }, [])
-    return (
-        <Register handleChange={handleChange} handleSubmit={handleSubmit} field={field}/>
-    );
+    if (isAuthenticated) {
+        return <Redirect to={DASHBOARD_URL}/>
+    } else {
+        return (
+            <Register error={error} handleChange={handleChange} handleSubmit={handleSubmit} field={field}/>
+        );
+    }
+
 }
 
 export default RegisterContainer;

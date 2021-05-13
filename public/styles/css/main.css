@@ -166,10 +166,34 @@ section {
   transition: .3s ease;
 }
 
+.alert {
+  display: inline-block;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 1.3rem;
+  padding: 1.4rem 2rem;
+  border-radius: 5px;
+  width: 15rem;
+  display: flex;
+  justify-content: center;
+  transition: .3s ease;
+}
+
+.alert-red {
+  color: #FFFFFF;
+  background-color: #dd7c8d;
+  border: 1px solid #dd7c8d;
+}
+
 .btn-blue {
   color: #FFFFFF;
   background-color: #29ABE2;
   border: 1px solid #29ABE2;
+}
+
+.btn-blue:hover {
+  opacity: .8;
 }
 
 .btn-blue:hover {

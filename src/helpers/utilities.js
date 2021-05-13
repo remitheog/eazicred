@@ -1,9 +1,23 @@
-import {
-  USER_DATA,
-  USER_TOKEN,
-} from '../constants/local';
-
-export function isAuthenticated() {
-    return !!(localStorage.getItem(USER_DATA) && localStorage.getItem(USER_TOKEN));
-
+export const tokenConfig = getState => {
+    const token = getState().auth.token
+    const config = {
+        headers: {
+            "Content-Type": "application/json",
+            accept: "application/json",
+            timeout: 30,
+            timeoutErrorMessage: "Request could not be completed (timeout(30))"
+        }
+    }
+    if(token){
+        config.headers["Authorization"] = `Bearer ${token}`
+    }
+    return config
 }
+
+export const showError = (err, defaultMsg) => {
+    if (err.response){
+        return err.response.message
+    }
+    return defaultMsg
+}
+

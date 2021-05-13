@@ -1,4 +1,14 @@
-import React from "react";
+import React from 'react';
+
+import { Link } from 'react-router-dom';
+
+import {
+  ABOUT_URL,
+  FAQS_URL,
+  HOME_URL,
+  REGISTER_URL,
+  SUPPORT_URL,
+} from '../routes/paths';
 
 const Footer = () => {
     return (
@@ -6,26 +16,24 @@ const Footer = () => {
             <div className="container">
                 <div className="footer__inner">
                     <div className="footer__col--1">
-                        <a href className="footer__logo">EaziCred</a>
-                        <p>We understand that sometimes people need to get to the next stage of their lives, careers or businesses but can have financial limits.</p>
+                        <Link to={HOME_URL} className="footer__logo">EaziCred</Link>
+                        <p>We understand that sometimes people need to get to the next stage of their lives, careers or
+                            businesses but can have financial limits.</p>
                     </div>
                     <div className="footer__col--2">
                         <h6 className="footer__heading">Menu</h6>
                         <ul>
                             <li>
-                                <a href="account.html" className="footer__link">Create Account</a>
+                                <Link to={REGISTER_URL} className="footer__link">Create Account</Link>
                             </li>
                             <li>
-                                <a href="support.html" className="footer__link">Contact Us</a>
+                                <Link to={SUPPORT_URL} className="footer__link">Support</Link>
                             </li>
                             <li>
-                                <a href="support.html" className="footer__link">Support</a>
+                                <Link to={FAQS_URL} className="footer__link">FAQs</Link>
                             </li>
                             <li>
-                                <a href="faqs.html" className="footer__link">FAQs</a>
-                            </li>
-                            <li>
-                                <a href className="footer__link">Index Us</a>
+                                <Link to={ABOUT_URL} className="footer__link">About Us</Link>
                             </li>
                         </ul>
                     </div>
@@ -33,10 +41,10 @@ const Footer = () => {
                         <h6 className="footer__heading">Legal</h6>
                         <ul>
                             <li>
-                                <a href className="footer__link">Privacy Policy</a>
+                                <Link to={SUPPORT_URL} className="footer__link">Privacy Policy</Link>
                             </li>
                             <li>
-                                <a href className="footer__link">Terms Of Service</a>
+                                <Link to={SUPPORT_URL} className="footer__link">Terms Of Service</Link>
                             </li>
                         </ul>
                     </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const Eligibility = () => {
     return (
@@ -6,7 +6,7 @@ const Eligibility = () => {
             <div className="container">
                 <div className="eligibility__inner">
                     <div className="eligibility__image-box">
-                        <img src="assets/eligibility-img.png" alt="a woman laughing"/>
+                        <img src={"assets/eligibility-img.png"} alt="a woman laughing"/>
                     </div>
                     <div className="eligibility__text-box">
                         <h2 className="h-2">Check If You Are Eligible</h2>

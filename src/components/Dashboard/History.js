@@ -10,7 +10,7 @@ const History = () => {
                     <main className="main">
                         <div className="main__top">
                             <h3 className="h3-db">History</h3>
-                            <img src="assets/login-image.png" className="user-picture" alt="user picture" />
+                            <img src={"assets/login-image.png"} className="user-picture" alt="user thumbnail" />
                         </div>
                         <div className="main__middle">
                             <h2 className="h2-db">Transaction History</h2>

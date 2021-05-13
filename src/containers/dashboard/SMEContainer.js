@@ -7,10 +7,10 @@ import {
 
 import SmeLoan from '../../components/Dashboard/SmeLoan';
 import SmeForm1 from '../../components/Dashboard/steps/SMEForm1';
-import applySmeLoan from '../../redux/actions/smeThunk';
+import { applySmeLoan } from '../../redux/actions/loanThunk';
 
 const SMEContainer = () => {
-    const userID = useSelector(state => state.user.data.id)
+    const userID = useSelector(state => state["user"].data.id)
     const [field, setField] = React.useState({
         "user_id": userID,
         "business_name": "",
@@ -20,7 +20,8 @@ const SMEContainer = () => {
         "business_up_time": "",
         "purpose_of_loan": "",
     })
-    const [step, setStep] = React.useState(1)
+
+    const step = React.useState(1)[0]
     // const nextStep = () => {
     //     setStep(step + 1)
     // }
@@ -49,8 +50,8 @@ const SMEContainer = () => {
                 return <SmeForm1 showMsg={showMsg} field={field} handleChange={handleChange}/>
         }
     }
-    const showNotification = useSelector(state => state.notify.show)
-    const showMsg = useSelector(state => state.notify.message.show)
+    const showNotification = useSelector(state => state["notify"].show)
+    const showMsg = useSelector(state => state["notify"].message.show)
     return (
         <SmeLoan showNotification={showNotification} switchForm={switchForm} step={step} handleSubmit={handleSubmit}/>
     );

@@ -1,4 +1,8 @@
-import React from "react";
+import React from 'react';
+
+import { Link } from 'react-router-dom';
+
+import { SUPPORT_URL } from '../../routes/paths';
 
 const HomeHeader = () => {
     return (
@@ -11,15 +15,16 @@ const HomeHeader = () => {
 
                         <form>
                             <input type="text" className="email" placeholder="Type your e-mail"/>
-                                <button className="btn btn-blue">Get Started</button>
+                            <button className="btn btn-blue">Get Started</button>
                         </form>
 
-                        <p>By clicking "Get Started" you confirming that you agree with our following <a href="">Terms
-                            and Conditions</a>
+                        <p>By clicking "Get Started" you confirming that you agree with our following <Link
+                            to={SUPPORT_URL}>Terms
+                            and Conditions</Link>
                         </p>
                     </div>
                     <div className="hero__image">
-                        <img src="assets/hero-image.png" alt="a woman smiling"/>
+                        <img src={"assets/hero-image.png"} alt="a woman smiling"/>
                     </div>
                 </div>
             </div>
