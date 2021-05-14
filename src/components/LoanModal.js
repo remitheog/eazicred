@@ -3,7 +3,7 @@ import React from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import { hideNotification } from '../../redux/actions/actions';
+import { hideNotification } from '../redux/actions/actions';
 
 const LoanModal = () => {
     const dispatch = useDispatch()

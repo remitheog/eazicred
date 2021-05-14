@@ -9,8 +9,8 @@ import {
   DASHBOARD_LOAN_APPLICATION_URL,
   HOME_URL,
 } from '../../routes/paths';
-import LoanModal from './LoanModal';
-import SideBar from './SideBar';
+import LoanModal from '../LoanModal';
+import SideBar from '../SideBar';
 
 const Consumer = ({showNotification, switchForm, step, handleSubmit}) => {
 
@@ -26,7 +26,7 @@ const Consumer = ({showNotification, switchForm, step, handleSubmit}) => {
                             <i className="fas fa-bars open"/>
                         </button>
                         <Link to={HOME_URL} className="main__logo">EaziCred</Link>
-                        <img src="assets/login-image.png" className="user-picture" alt=""/>
+                        <img src={"assets/login-image.png"} className="user-picture" alt=""/>
                     </div>
                     <div className="main__middle">
                         <span onClick={() => history.push(DASHBOARD_LOAN_APPLICATION_URL)} style={{cursor: "pointer"}}

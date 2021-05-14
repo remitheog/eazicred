@@ -10,9 +10,7 @@
     padding: 8rem 0;
 
     &__inner {
-        display: grid;
-        grid-template-columns: 30rem 1fr;
-        gap: 6rem;
+        max-width: 80rem;
     }
 
     p:not(:last-child) {
@@ -31,6 +29,19 @@
         grid-template-columns: repeat(4, 1fr);
         gap: 4rem;
         margin-top: 4rem;
+    }
+
+    &__inner-mobile {
+        display: none;
+    
+        div {
+            flex-basis: 100%;
+            text-align: left;
+    
+            .slick-dots li button::before {
+                color: $color-1;
+            }
+        }
     }
 
     img {
@@ -62,16 +73,25 @@
 
 @media screen and (max-width: 600px) {
     .gallery {
-        &__inner {
+        &__inner-pc {
             grid-template-columns: repeat(2, 1fr);
         }
     }
 }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 479px) {
     .gallery {
-        &__inner {
-            grid-template-columns: 1fr;
+        &__inner-pc {
+            display: none;
+        }
+
+        &__box {
+            padding: 3rem;
+        }
+
+        &__inner-mobile {
+            display: flex;
+            justify-content: center;
         }
     }
 }

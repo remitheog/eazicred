@@ -6,7 +6,7 @@ import {
   useSelector,
 } from 'react-redux';
 
-import { hideMessage } from '../../redux/actions/actions';
+import { hideMessage } from '../redux/actions/actions';
 
 const MessageAlert = (props) => {
     const message = useSelector(state => {

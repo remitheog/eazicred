@@ -1,0 +1,25 @@
+.terms {
+    padding: 8rem 0;
+
+    &__inner {
+        max-width: 80rem;
+    }
+
+    .h-2 {
+        margin-bottom: 2.5rem;
+    }
+
+    h3 {
+        color: $color-4;
+        margin-top: 4rem;
+    }
+
+    h4 {
+        font-size: 1.53rem;
+        color: $color-4;
+    }
+
+    p:not(:last-child) {
+        margin-bottom: 3rem;
+    }
+}

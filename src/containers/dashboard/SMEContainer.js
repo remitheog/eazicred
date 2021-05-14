@@ -6,7 +6,7 @@ import {
 } from 'react-redux';
 
 import SmeLoan from '../../components/Dashboard/SmeLoan';
-import SmeForm1 from '../../components/Dashboard/steps/SMEForm1';
+import SmeForm1 from '../../components/steps/SMEForm1';
 import { applySmeLoan } from '../../redux/actions/loanThunk';
 
 const SMEContainer = () => {

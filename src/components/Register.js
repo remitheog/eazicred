@@ -6,7 +6,7 @@ import {
   ABOUT_URL,
   LOGIN_URL,
 } from '../routes/paths';
-import MessageAlert from './Dashboard/MessageAlert';
+import MessageAlert from './MessageAlert';
 
 const Register = ({handleChange, field, handleSubmit, error}) => {
     return (

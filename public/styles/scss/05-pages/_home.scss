@@ -56,19 +56,41 @@
     }    
 }
 
-// STATS SECTION
+// STATS SECTION - MOBILE AND PC
 .stats {
     background-color: $color-22;
     padding: 4rem 0;
+    
+    p {
+        color: $color-4;
+        font-weight: 700;
+        font-size: 1.3rem;
+        margin-top: .5rem;
+    }
+}
 
-    &__inner {
+.stats-pc {
+
+    .stats__inner {
         @extend .innerFlex;
+    }
+}
 
-        p {
-            color: $color-4;
-            font-weight: 700;
-            font-size: 1.3rem;
-            margin-top: .5rem;
+.stats-mobile {
+    display: none;
+
+    .stats__inner {
+        display: flex;
+        justify-content: center;
+    }
+
+    div {
+        height: 9rem;
+        flex-basis: 100%;
+        text-align: center;
+
+        .slick-dots li button::before {
+            color: $color-1;
         }
     }
 }
@@ -102,11 +124,31 @@
 // LOANS SECTION
 .loans {
     padding: 5rem 0;
+}
 
-    &__inner {
+.loans-pc {
+    .loans__inner-pc {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         column-gap: 5rem;
+    }
+}
+
+.loans-mobile {
+    display: none;
+
+    .loans__inner-mobile {
+        display: flex;
+        justify-content: center;
+    }
+
+    div {
+        flex-basis: 100%;
+        text-align: left;
+
+        .slick-dots li button::before {
+            color: $color-1;
+        }
     }
 }
 
@@ -322,12 +364,16 @@
             margin-bottom: 2rem;
         }
 
-        > div {
+        .form-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             column-gap: 5rem;
             margin-right: 3rem;
             margin-bottom: 2rem;
+
+            input, select {
+                width: 100%;
+            }
         }
 
         label {
@@ -343,8 +389,11 @@
             padding: 1.5rem;
             font-family: inherit;
             border-radius: 5px;
-            width: 100%;
             outline: none;
+        }
+
+        select {
+            background-color: transparent;
         }
     }
 
@@ -452,7 +501,7 @@
             }
 
             .calculation {
-                > div {
+                .form-grid {
                     margin-right: 0;
                     column-gap: 3rem;
                 }
@@ -476,8 +525,8 @@
         }
     }
 
-    .loans {
-        &__inner {
+    .loans-pc {
+        .loans__inner-pc {
             grid-template-columns: 1fr;
         }
 
@@ -520,17 +569,12 @@
         }
     }
 
-    .stats__inner {
-        flex-direction: column;
-        text-align: center;
+    .stats-pc {
+        display: none;
+    }
 
-        div {
-            margin-bottom: 3rem;
-        }
-
-        p {
-            letter-spacing: -.3px;
-        }
+    .stats-mobile {
+        display: block;
     }
 
     .choice__inner {
@@ -539,9 +583,17 @@
         row-gap: 7rem;
     }
 
+    .loans-pc {
+        display: none;
+    }
+
+    .loans-mobile {
+        display: block;
+    }
+
     .calculator {
         .calculation {
-            > div {
+            .form-grid {
                 grid-template-columns: 1fr;
                 row-gap: 3rem;
             }

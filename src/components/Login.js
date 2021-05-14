@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { REGISTER_URL } from '../routes/paths';
-import MessageAlert from './Dashboard/MessageAlert';
+import MessageAlert from './MessageAlert';
 
 const Login = ({field, handleChange, handleSubmit, error}) => {
     return (

@@ -9,8 +9,8 @@ import {
   DASHBOARD_LOAN_APPLICATION_URL,
   DASHBOARD_URL,
 } from '../../routes/paths';
-import LoanModal from './LoanModal';
-import SideBar from './SideBar';
+import LoanModal from '../LoanModal';
+import SideBar from '../SideBar';
 
 const SmeLoan = ({showNotification, step, switchForm, handleSubmit}) => {
     document.title = "Eazicred - SME Loan"
@@ -26,7 +26,7 @@ const SmeLoan = ({showNotification, step, switchForm, handleSubmit}) => {
                             <i className="fas fa-bars open"/>
                         </button>
                         <Link to={DASHBOARD_URL} className="main__logo">EaziCred</Link>
-                        <img src="assets/login-image.png" alt=""/>
+                        <img src={"assets/login-image.png"} alt=""/>
                     </div>
 
                     <div className="main__middle">

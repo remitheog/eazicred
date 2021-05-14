@@ -16,7 +16,7 @@ const VerifyEmail = () => {
                     </div>
                 </div>
                 <div className="account__image">
-                    <img src="assets/verify-image.png" alt="photo of a man smiling"/>
+                    <img src={"assets/verify-image.png"} alt="photo of a man smiling"/>
                 </div>
             </div>
         </div>

@@ -3,16 +3,38 @@
 .account {
     display: flex;
     align-items: center;
-    height: 100vh;
-    overflow-y: hidden;
 
     &__details,
     &__image {
         flex: 1;
     }
 
-    img {
+    &__image {
+        height: 100vh;
         width: 100%;
+    }
+
+    .register__image {
+        background-image: url("../../../assets/account-image.png");
+    }
+
+    .login__image {
+        background-image: url("../../../assets/login-image.png");
+    }
+
+    .verify-email__image {
+        background-image: url("../../../assets/verify-image.png");
+    }
+
+    .verify-email__image2 {
+        background-image: url("../../../assets/verify-image-2.png");
+    }
+
+    &__details {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     &__inner {
@@ -61,11 +83,7 @@
             margin-bottom: 1.6rem;
         }
 
-        button {
-            width: 100%;
-        }
-
-        button + p {
+        input + p {
             line-height: 1.55;
             font-size: 1.25rem;
             margin-top: 1.3rem;

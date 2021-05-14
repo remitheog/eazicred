@@ -35,7 +35,7 @@ const Faqs = () => {
                         </div>
                         <div className="faq">
                             <h6 className="h-6">Q: How do I pay back my loan?</h6>
-                            <p>A: Loans are primarily paid back via direct debit (REMITA) or NUBAN cheque</p>
+                            <p>A: Loans are primarily paid back via direct debit (Remita) or Nuban cheque</p>
                         </div>
                         <div className="faq">
                             <h6 className="h-6">Q: Do I need to come to the office to apply for a loan or repayment</h6>

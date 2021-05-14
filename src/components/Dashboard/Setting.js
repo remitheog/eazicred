@@ -1,7 +1,7 @@
 import React from 'react';
 
-import MessageAlert from './MessageAlert';
-import SideBar from './SideBar';
+import MessageAlert from '../MessageAlert';
+import SideBar from '../SideBar';
 
 const Setting = ({field, handleChange, handleSubmit, showMsg}) => {
     return (
@@ -11,7 +11,7 @@ const Setting = ({field, handleChange, handleSubmit, showMsg}) => {
                 <main className="main">
                     <div className="main__top">
                         <h3 className="h3-db">Settings</h3>
-                        <img src="assets/login-image.png" className="user-picture" alt="" />
+                        <img src={"assets/login-image.png"} className="user-picture" alt="" />
                     </div>
                     <div className="main__middle">
                         <h2 className="h2-db">Account Settings</h2>

@@ -6,10 +6,10 @@ import {
 } from 'react-redux';
 
 import Consumer from '../../components/Dashboard/Consumer';
-import FormStep1 from '../../components/Dashboard/steps/FormStep1';
-import FormStep2 from '../../components/Dashboard/steps/FormStep2';
-import FormStep3 from '../../components/Dashboard/steps/FormStep3';
-import FormStep4 from '../../components/Dashboard/steps/FormStep4';
+import FormStep1 from '../../components/steps/FormStep1';
+import FormStep2 from '../../components/steps/FormStep2';
+import FormStep3 from '../../components/steps/FormStep3';
+import FormStep4 from '../../components/steps/FormStep4';
 import { applyPaydayLoan } from '../../redux/actions/loanThunk';
 
 const ConsumerContainer = () => {

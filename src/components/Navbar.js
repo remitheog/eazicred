@@ -17,12 +17,12 @@ const Navbar = () => {
             <nav className="nav">
                 <div className="nav__inner">
                     <button className="nav__menu">
-                        <i className="fas fa-bars open"></i>
-                        <i className="fas fa-times close"></i>
+                        <i className="fas fa-bars open"/>
+                        <i className="fas fa-times close"/>
                     </button>
 
                     <Link to={HOME_URL} className="nav__logo">
-                        <img src="assets/eazicred-logo.svg" alt="eazycred logo"/>
+                        <img src={"assets/eazicred-logo.svg"} alt="Eazicred logo"/>
                     </Link>
 
                     <ul className="nav__list">

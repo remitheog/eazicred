@@ -10,7 +10,7 @@ import {
   DASHBOARD_SME_LOAN_APPLICATION_URL,
   DASHBOARD_URL,
 } from '../../routes/paths';
-import SideBar from './SideBar';
+import SideBar from '../SideBar';
 
 const LoanApplication = () => {
     document.title = "Loan Application"
@@ -28,7 +28,7 @@ const LoanApplication = () => {
                 <main className="main">
                     <div className="main__top">
                         <h3 className="h3-db">Loan Applications</h3>
-                        <img src="assets/login-image.png" className="user-picture" alt="" />
+                        <img src={"assets/login-image.png"} className="user-picture" alt="" />
                     </div>
                     <div className="main__middle">
                         <span onClick={() => history.push(DASHBOARD_URL)} style={{cursor: "pointer"}} className="go-back">&lt; Go Back</span>

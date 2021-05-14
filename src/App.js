@@ -13,8 +13,10 @@ import Faqs from './components/FAQs';
 import Footer from './components/Footer';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
+import Privacy from './components/Privacy';
 import ProtectedRoute from './components/ProtectedRoute';
 import Support from './components/Support';
+import Terms from './components/Terms';
 import ConsumerContainer from './containers/dashboard/ConsumerContainer';
 import DashboardContainer from './containers/dashboard/DashboardContainer';
 import ProfileContainer from './containers/dashboard/ProfileContainer';
@@ -34,8 +36,10 @@ import {
   FAQS_URL,
   HOME_URL,
   LOGIN_URL,
+  PRIVACY_URL,
   REGISTER_URL,
   SUPPORT_URL,
+  TERMS_URL,
 } from './routes/paths';
 
 function App() {
@@ -62,6 +66,8 @@ function App() {
                 <Route exact path={HOME_URL} component={Home}/>
                 <Route path={SUPPORT_URL} component={Support}/>
                 <Route path={FAQS_URL} component={Faqs}/>
+                <Route path={TERMS_URL} component={Terms}/>
+                <Route path={PRIVACY_URL} component={Privacy}/>
                 <ProtectedRoute exact path={DASHBOARD_URL} component={DashboardContainer}/>
                 <ProtectedRoute path={DASHBOARD_PROFILE_URL} component={ProfileContainer}/>
                 <ProtectedRoute path={DASHBOARD_SETTING_URL} component={SettingsContainer}/>

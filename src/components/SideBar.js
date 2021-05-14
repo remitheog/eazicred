@@ -7,7 +7,7 @@ import {
   useHistory,
 } from 'react-router-dom';
 
-import { logoutRequest } from '../../redux/actions/actions';
+import { logoutRequest } from '../redux/actions/actions';
 import {
   DASHBOARD_HISTORY_URL,
   DASHBOARD_LOAN_APPLICATION_URL,
@@ -15,7 +15,7 @@ import {
   DASHBOARD_SETTING_URL,
   DASHBOARD_URL,
   HOME_URL,
-} from '../../routes/paths';
+} from '../routes/paths';
 
 const SideBar = () => {
     const history = useHistory()
