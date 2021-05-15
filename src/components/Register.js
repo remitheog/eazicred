@@ -2,11 +2,11 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
+import MessageAlert from '../Common/MessageAlert';
 import {
   ABOUT_URL,
   LOGIN_URL,
 } from '../routes/paths';
-import MessageAlert from './MessageAlert';
 
 const Register = ({handleChange, field, handleSubmit, error}) => {
     return (

@@ -24,7 +24,6 @@ import {
 export const getUser = () => (dispatch, getState) => {
     dispatch(getUserRequest())
     const id = getState().auth.user.id
-
     axiosInstance.get(`${GET_USER_ENDPOINT}${id}`, tokenConfig(getState))
         .then(res => {
             dispatch(getUserSuccess(res.data.data))

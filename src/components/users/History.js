@@ -1,51 +1,32 @@
 import React from 'react';
 
-import { DASHBOARD_URL } from '../../routes/paths';
-import Login from '../Login';
-import SideBar from '../SideBar';
+import { Link } from 'react-router-dom';
 
-const Dashboard = () => {
+import { DASHBOARD_URL } from '../../routes/paths';
+import UserSideBar from './UserSideBar';
+
+const History = () => {
+    document.title = "EaziCred - Loan History"
     return (
         <div className="dashboard">
             <div className="container-lg">
-                <SideBar/>
+                <UserSideBar/>
                 <main className="main">
                     <div className="main__top">
-                        <h3 className="h3-db">Dashboard</h3>
+                        <h3 className="h3-db">History</h3>
                         <button className="main__menu">
                             <i className="fas fa-bars open"/>
                         </button>
-                        <Login className="main__logo" to={DASHBOARD_URL}>EaziCred</Login>
-                        <img alt="" src={"assets/login-image.png"}/>
+                        <Link to={DASHBOARD_URL} className="main__logo">EaziCred</Link>
+                        <img src={"assets/login-image.png"} className="user-picture" alt=""/>
                     </div>
 
                     <div className="main__middle">
-                        <h2 className="h2-db">Welcome <span>Micheal</span></h2>
-                        <p className="p2-db">Here's a quick summary of what's happening</p>
+                        <h2 className="h2-db">Transaction History</h2>
+                        <p className="p2-db">Here's a summary of all your transactions</p>
                     </div>
 
-                    <div className="main__user-overview">
-                        <div>
-                            <p>Credit Balance</p>
-                            <span>&#8358;12,293,300</span>
-                        </div>
-                        <div>
-                            <p>Total Received</p>
-                            <span>&#8358;6,299,300</span>
-                        </div>
-                        <div>
-                            <p>Total Paid</p>
-                            <span>&#8358;20,293,300</span>
-                        </div>
-                    </div>
-
-                   {/*WHAT TO BE SHOWN IF A USER HAS LOANS HISTORY */}
-                    <div className="main__loan-history">
-                        <div className="main__loan-history--top">
-                            <h3 className="h3-db">Loan History</h3>
-                            <button className="view-history">View All</button>
-                        </div>
-
+                    <div className="main__loan-history history-tab">
                         <div className="main__loan-history--box">
                             <div className="loan__row loan__heading">
                                 <span>Date</span>
@@ -75,9 +56,36 @@ const Dashboard = () => {
                                 <span>₦12,293,300</span>
                                 <button className="view-details">View Details</button>
                             </div>
+                            <div className="loan__row">
+                                <span>December 1<br/>2021</span>
+                                <span>#527839</span>
+                                <span>Loan Repayment</span>
+                                <span>₦12,293,300</span>
+                                <button className="view-details">View Details</button>
+                            </div>
+                            <div className="loan__row">
+                                <span>December 1<br/>2021</span>
+                                <span>#527839</span>
+                                <span>Loan Repayment</span>
+                                <span>₦12,293,300</span>
+                                <button className="view-details">View Details</button>
+                            </div>
+                            <div className="loan__row">
+                                <span>December 1<br/>2021</span>
+                                <span>#527839</span>
+                                <span>Loan Repayment</span>
+                                <span>₦12,293,300</span>
+                                <button className="view-details">View Details</button>
+                            </div>
+                            <div className="loan__row">
+                                <span>December 1<br/>2021</span>
+                                <span>#527839</span>
+                                <span>Loan Repayment</span>
+                                <span>₦12,293,300</span>
+                                <button className="view-details">View Details</button>
+                            </div>
                         </div>
-
-                        {/*The modal popup after the view details button has been clicked */}
+                        {/*The modal popup after the view details button has been clicked*/}
                         <div className="modal-overlay">
                             <div className="modal">
                                 <div className="modal__top">
@@ -119,20 +127,10 @@ const Dashboard = () => {
                             </div>
                         </div>
                     </div>
-
-                    {/*WHAT TO BE SHOWN IF A USER HAS NO LOANS HISTORY*/}
-
-                   {/*<div class="main__loan-nohistory">*/}
-                   {/*     <div>*/}
-                   {/*         <img src="../assets/EmptyInbox.svg" alt="empty box">*/}
-                   {/*         <h3 class="h3-db">Loan History</h3>*/}
-                   {/*         <p>You haven't taken any loans yet. <a href="">Apply for one now</a></p>*/}
-                   {/*     </div>*/}
-                   {/* </div>*/}
                 </main>
             </div>
         </div>
     );
 }
 
-export default Dashboard;
+export default History;

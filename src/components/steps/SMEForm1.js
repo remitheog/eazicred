@@ -1,6 +1,6 @@
 import React from 'react';
 
-import MessageAlert from '../MessageAlert';
+import MessageAlert from '../../Common/MessageAlert';
 
 const SmeForm1 = ({showMsg, field, handleChange}) => {
     return (

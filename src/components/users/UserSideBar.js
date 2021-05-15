@@ -7,7 +7,7 @@ import {
   useHistory,
 } from 'react-router-dom';
 
-import { logoutRequest } from '../redux/actions/actions';
+import { logoutRequest } from '../../redux/actions/actions';
 import {
   DASHBOARD_HISTORY_URL,
   DASHBOARD_LOAN_APPLICATION_URL,
@@ -15,14 +15,14 @@ import {
   DASHBOARD_SETTING_URL,
   DASHBOARD_URL,
   HOME_URL,
-} from '../routes/paths';
+} from '../../routes/paths';
 
-const SideBar = () => {
+const UserSideBar = () => {
     const history = useHistory()
     const dispatch = useDispatch()
 
     const handleLogOut = () => {
-        if(window.confirm("Are you sure you want want to logout of this session?")){
+        if (window.confirm("Are you sure you want want to logout of this session?")) {
             dispatch(logoutRequest())
             history.push(HOME_URL)
         }
@@ -33,7 +33,7 @@ const SideBar = () => {
             <h4 className="sidebar__h4">Main</h4>
             <ul className="sidebar__list">
                 <li>
-                    <NavLink exact activeClassName="active"  to={DASHBOARD_URL}>
+                    <NavLink exact activeClassName="active" to={DASHBOARD_URL}>
                         <svg xmlns="http://www.w3.org/2000/svg" width={23} height={23} viewBox="0 0 23 23">
                             <defs>
                                 <style
@@ -49,7 +49,7 @@ const SideBar = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink activeClassName="active"  to={DASHBOARD_LOAN_APPLICATION_URL}>
+                    <NavLink activeClassName="active" to={DASHBOARD_LOAN_APPLICATION_URL}>
                         <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24">
                             <defs>
                                 <style
@@ -74,7 +74,7 @@ const SideBar = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink activeClassName="active"  to={DASHBOARD_HISTORY_URL}>
+                    <NavLink activeClassName="active" to={DASHBOARD_HISTORY_URL}>
                         <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24">
                             <defs>
                                 <style
@@ -132,8 +132,7 @@ const SideBar = () => {
                 <button onClick={handleLogOut}>Log Out</button>
             </div>
         </aside>
-
     );
 }
 
-export default SideBar;
+export default UserSideBar;

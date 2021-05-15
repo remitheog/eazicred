@@ -162,14 +162,11 @@ const Home = () => {
                             <ul>
                                 <li>You must be between 22 – 58 years old</li>
                                 <li>You must be a resident of Lagos State</li>
-                                <li>You must be a salary earner or own a small or medium enterprise (duly registered
-                                    with CAC)
-                                </li>
+                                <li>You must be a salary earner or own a small or medium enterprise (duly registered with CAC)</li>
                                 <li>You must have bank statement dating back to the last 6months</li>
                                 <li>You must have a valid government issued ID card</li>
-                                <li>You must have a guarantor (conditional) You must have proof of residence (Utility
-                                    bill)
-                                </li>
+                                <li>You must have a guarantor (conditional)</li>
+                                <li>You must have proof of residence (Utility bill)</li>
                             </ul>
                         </div>
                     </div>

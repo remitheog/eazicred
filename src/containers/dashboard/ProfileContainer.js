@@ -5,19 +5,20 @@ import {
   useSelector,
 } from 'react-redux';
 
-import Profile from '../../components/Dashboard/Profile';
+import Profile from '../../components/users/Profile';
 import { changeProfile } from '../../redux/actions/dashboard/profileThunk';
 
 const ProfileContainer = () => {
-    document.title = "Update your Easicred Profile"
+    document.title = "Update your Eazicred Profile"
 
-    const currentUser = useSelector(state => state.user.data)
+    const currentUser = useSelector(state => state.auth.user)
 
     const state = useSelector(state => state.profile)
 
     const [field, setField] = React.useState({
         firstname:currentUser.firstname,
-        lastname:currentUser.lastname
+        lastname:currentUser.lastname,
+        phone:currentUser.phone,
     })
 
     const showMsg = useSelector(state => state.notify.message.show)

@@ -6,26 +6,32 @@ import {
   useLocation,
 } from 'react-router-dom';
 
+import Footer from './Common/Footer';
+import Navbar from './Common/Navbar';
+import ProtectedRoute from './Common/ProtectedRoute';
 import About from './components/About';
-import History from './components/Dashboard/History';
-import LoanApplication from './components/Dashboard/LoanApplication';
+import Agents from './components/admin/Agents';
+import Loans from './components/admin/Loans';
+import Users from './components/admin/Users';
 import Faqs from './components/FAQs';
-import Footer from './components/Footer';
 import Home from './components/Home';
-import Navbar from './components/Navbar';
+import Login from './components/Login';
 import Privacy from './components/Privacy';
-import ProtectedRoute from './components/ProtectedRoute';
 import Support from './components/Support';
 import Terms from './components/Terms';
+import Dashboard from './components/users/Dashboard';
+import History from './components/users/History';
+import LoanApplication from './components/users/LoanApplication';
 import ConsumerContainer from './containers/dashboard/ConsumerContainer';
-import DashboardContainer from './containers/dashboard/DashboardContainer';
 import ProfileContainer from './containers/dashboard/ProfileContainer';
 import SettingsContainer from './containers/dashboard/SettingsContainer';
 import SMEContainer from './containers/dashboard/SMEContainer';
-import LoginContainer from './containers/LoginContainer';
 import RegisterContainer from './containers/RegisterContainer';
 import {
   ABOUT_URL,
+  ADMIN_AGENTS_URL,
+  ADMIN_LOANS_URL,
+  ADMIN_USERS_URL,
   DASHBOARD_CONSUMER_LOAN_APPLICATION_URL,
   DASHBOARD_HISTORY_URL,
   DASHBOARD_LOAN_APPLICATION_URL,
@@ -53,14 +59,17 @@ function App() {
         DASHBOARD_LOAN_APPLICATION_URL,
         DASHBOARD_SME_LOAN_APPLICATION_URL,
         DASHBOARD_CONSUMER_LOAN_APPLICATION_URL,
-        DASHBOARD_HISTORY_URL
+        DASHBOARD_HISTORY_URL,
+        ADMIN_AGENTS_URL,
+        ADMIN_USERS_URL,
+        ADMIN_LOANS_URL
     ]
     return (
         <React.Fragment>
 
             {!auth.includes(location.pathname) && <Navbar/>}
             <Switch>
-                <Route path={LOGIN_URL} component={LoginContainer}/>
+                <Route path={LOGIN_URL} component={Login}/>
                 <Route path={REGISTER_URL} component={RegisterContainer}/>
                 <Route path={ABOUT_URL} component={About}/>
                 <Route exact path={HOME_URL} component={Home}/>
@@ -68,7 +77,10 @@ function App() {
                 <Route path={FAQS_URL} component={Faqs}/>
                 <Route path={TERMS_URL} component={Terms}/>
                 <Route path={PRIVACY_URL} component={Privacy}/>
-                <ProtectedRoute exact path={DASHBOARD_URL} component={DashboardContainer}/>
+                <ProtectedRoute exact path={DASHBOARD_URL} component={Dashboard}/>
+                <ProtectedRoute exact path={ADMIN_AGENTS_URL} component={Agents}/>
+                <ProtectedRoute exact path={ADMIN_USERS_URL} component={Users}/>
+                <ProtectedRoute exact path={ADMIN_LOANS_URL} component={Loans}/>
                 <ProtectedRoute path={DASHBOARD_PROFILE_URL} component={ProfileContainer}/>
                 <ProtectedRoute path={DASHBOARD_SETTING_URL} component={SettingsContainer}/>
                 <ProtectedRoute path={DASHBOARD_CONSUMER_LOAN_APPLICATION_URL} component={ConsumerContainer}/>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import MessageAlert from '../MessageAlert';
+import MessageAlert from '../../Common/MessageAlert';
 
 const FormStep4 = ({showMsg, prevStep, handleChange, field}) => {
     return (
@@ -67,7 +67,7 @@ const FormStep4 = ({showMsg, prevStep, handleChange, field}) => {
                 </div>
                 <div className="input-group">
                     <label htmlFor="passport">Passport</label>
-                    <input value={field.passport} onChange={handleChange}  type="file" id="passport" />
+                    <input value={field.passport} onChange={handleChange} name={"passport"} type="file" id="passport" />
                 </div>
                 <div className="input-group">
                     <label htmlFor="government_ID">Government ID</label>

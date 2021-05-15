@@ -12,6 +12,7 @@ export const changeProfile = (data) => (dispatch, getState) => {
     dispatch(updateProfileRequest())
     axiosInstance.put(CHANGE_USER_ENDPOINT, {...data}, tokenConfig(getState))
         .then(res => {
+            console.log(res.data)
             dispatch(getUserSuccess(res.data.data))
             dispatch(showMessage({message: res.data.successMessage, type: 'success'}))
         })

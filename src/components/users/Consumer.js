@@ -9,8 +9,8 @@ import {
   DASHBOARD_LOAN_APPLICATION_URL,
   HOME_URL,
 } from '../../routes/paths';
-import LoanModal from '../LoanModal';
-import SideBar from '../SideBar';
+import LoanModal from './LoanModal';
+import UserSideBar from './UserSideBar';
 
 const Consumer = ({showNotification, switchForm, step, handleSubmit}) => {
 
@@ -18,7 +18,7 @@ const Consumer = ({showNotification, switchForm, step, handleSubmit}) => {
     return (
         <div className="dashboard">
             <div className="container-lg">
-                <SideBar/>
+                <UserSideBar/>
                 <main className="main">
                     <div className="main__top">
                         <h3 className="h3-db">Loan Applications</h3>

@@ -5,12 +5,12 @@ import {
   useSelector,
 } from 'react-redux';
 
-import SmeLoan from '../../components/Dashboard/SmeLoan';
 import SmeForm1 from '../../components/steps/SMEForm1';
+import SmeLoan from '../../components/users/SmeLoan';
 import { applySmeLoan } from '../../redux/actions/loanThunk';
 
 const SMEContainer = () => {
-    const userID = useSelector(state => state["user"].data.id)
+    const userID = useSelector(state => state["auth"].user.id)
     const [field, setField] = React.useState({
         "user_id": userID,
         "business_name": "",
@@ -22,12 +22,6 @@ const SMEContainer = () => {
     })
 
     const step = React.useState(1)[0]
-    // const nextStep = () => {
-    //     setStep(step + 1)
-    // }
-    // const prevStep = () => {
-    //     setStep(step - 1)
-    // }
 
     const handleChange = (e) => {
         setField({...field, [e.target.name]: e.target.value})
@@ -40,12 +34,9 @@ const SMEContainer = () => {
     }
 
     document.title = "Eazicred - SME Loan"
+
     const switchForm = () => {
         switch (step) {
-            // case 1:
-            //     return <SmeForm1 field={field} handleChange={handleChange}  nextStep={nextStep}/>
-            // case 2:
-            //     return <SmeForm2 field={field} handleChange={handleChange} prevStep={prevStep}/>
             default:
                 return <SmeForm1 showMsg={showMsg} field={field} handleChange={handleChange}/>
         }

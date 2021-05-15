@@ -1,13 +1,13 @@
 import React from 'react';
 
-import MessageAlert from '../MessageAlert';
-import SideBar from '../SideBar';
+import MessageAlert from '../../Common/MessageAlert';
+import UserSideBar from './UserSideBar';
 
 const Setting = ({field, handleChange, handleSubmit, showMsg}) => {
     return (
         <div className="dashboard">
             <div className="container-lg">
-                <SideBar/>
+                <UserSideBar/>
                 <main className="main">
                     <div className="main__top">
                         <h3 className="h3-db">Settings</h3>

@@ -13,7 +13,7 @@ import { DASHBOARD_URL } from '../routes/paths';
 
 const RegisterContainer = () => {
     document.title = "Eazicred - Create Account"
-    const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+    const isAuthenticated = useSelector(state => state["auth"].isAuthenticated)
     const [field, setField] = React.useState({
         "email": "",
         "firstname": "",
@@ -22,7 +22,7 @@ const RegisterContainer = () => {
         "code": "",
         "password": ""
     })
-    const error = useSelector(state => state.notify.message)
+    const error = useSelector(state => state["notify"].message)
     const dispatch = useDispatch()
 
     const handleChange = ({target}) => {

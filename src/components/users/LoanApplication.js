@@ -10,7 +10,7 @@ import {
   DASHBOARD_SME_LOAN_APPLICATION_URL,
   DASHBOARD_URL,
 } from '../../routes/paths';
-import SideBar from '../SideBar';
+import UserSideBar from './UserSideBar';
 
 const LoanApplication = () => {
     document.title = "Loan Application"
@@ -24,7 +24,7 @@ const LoanApplication = () => {
     return (
         <div className="dashboard">
             <div className="container-lg">
-                <SideBar/>
+                <UserSideBar/>
                 <main className="main">
                     <div className="main__top">
                         <h3 className="h3-db">Loan Applications</h3>
@@ -35,18 +35,23 @@ const LoanApplication = () => {
                         <h2 className="h2-db">Apply For Loan</h2>
                         <p className="p2-db">Select a loan type from the options below to continue</p>
                     </div>
+
                     <div className="main__loan-overview">
                         <div className="loan-types">
-                            <Link onMouseOut={handleMouseOut} onMouseOver={handleMouseOver} to={DASHBOARD_CONSUMER_LOAN_APPLICATION_URL} className="consumer-loan">
+                            <Link onMouseOut={handleMouseOut} onMouseOver={handleMouseOver}
+                                  to={DASHBOARD_CONSUMER_LOAN_APPLICATION_URL} className="loan-type consumer-loan">
                                 <div>
                                     <h3 className="h3-db">Consumer Loans</h3>
-                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                                    <p>It is a long established fact that a reader will be distracted by the readable
+                                        content of a page when looking at its layout.</p>
                                 </div>
                             </Link>
-                            <Link onMouseOut={handleMouseOut}  onMouseOver={handleMouseOver} to={DASHBOARD_SME_LOAN_APPLICATION_URL} className="sme-loan">
+                            <Link onMouseOut={handleMouseOut} onMouseOver={handleMouseOver}
+                                  to={DASHBOARD_SME_LOAN_APPLICATION_URL} className="loan-type sme-loan">
                                 <div>
                                     <h3 className="h3-db">SME Loans</h3>
-                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                                    <p>It is a long established fact that a reader will be distracted by the readable
+                                        content of a page when looking at its layout.</p>
                                 </div>
                             </Link>
                         </div>

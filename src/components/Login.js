@@ -1,11 +1,33 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import {
+  Link,
+  Redirect,
+} from 'react-router-dom';
 
-import { REGISTER_URL } from '../routes/paths';
-import MessageAlert from './MessageAlert';
+import MessageAlert from '../Common/MessageAlert';
+import { loginUser } from '../redux/actions/authThunks';
+import {
+  DASHBOARD_URL,
+  REGISTER_URL,
+} from '../routes/paths';
 
-const Login = ({field, handleChange, handleSubmit, error}) => {
+const Login = ({isAuthenticated, login, error}) => {
+    document.title = "Eazicred - Login to eazicred"
+    const [field, setField] = React.useState({"email": "", "password": ""})
+
+    const handleChange = (e) => {
+        setField({...field, [e.target.name]:e.target.value})
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        login(field)
+    }
+    if(isAuthenticated){
+        return <Redirect to={DASHBOARD_URL}/>
+    }
     return (
         <div className="container-lg">
             <div className="account">
@@ -52,4 +74,18 @@ const Login = ({field, handleChange, handleSubmit, error}) => {
     )
 }
 
-export default Login
+
+const mapState = (state) => {
+    return {
+        isAuthenticated: state.auth.isAuthenticated,
+        error: state.notify.message,
+    }
+}
+
+const mapDispatch = (dispatch) => {
+    return {
+        login: (data) => dispatch(loginUser(data))
+    }
+}
+
+export default connect(mapState, mapDispatch)(Login);

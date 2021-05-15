@@ -5,7 +5,7 @@ import {
   useSelector,
 } from 'react-redux';
 
-import Setting from '../../components/Dashboard/Setting';
+import Setting from '../../components/users/Setting';
 import { changePassword } from '../../redux/actions/dashboard/settingThunk';
 
 const SettingsContainer = () => {
@@ -14,7 +14,7 @@ const SettingsContainer = () => {
         "newpassword": "",
         "oldpassword": ""
     })
-    const userID = useSelector(state => state.auth.data.user.id)
+    const userID = useSelector(state => state.auth.user.id)
     const showMsg = useSelector(state => state.notify.message.show)
     const handleChange = ({target: {name, value}}) => {
         setField({...field, [name]:value})

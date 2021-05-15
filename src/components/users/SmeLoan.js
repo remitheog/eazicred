@@ -9,8 +9,8 @@ import {
   DASHBOARD_LOAN_APPLICATION_URL,
   DASHBOARD_URL,
 } from '../../routes/paths';
-import LoanModal from '../LoanModal';
-import SideBar from '../SideBar';
+import LoanModal from './LoanModal';
+import UserSideBar from './UserSideBar';
 
 const SmeLoan = ({showNotification, step, switchForm, handleSubmit}) => {
     document.title = "Eazicred - SME Loan"
@@ -18,7 +18,7 @@ const SmeLoan = ({showNotification, step, switchForm, handleSubmit}) => {
     return (
         <div className="dashboard">
             <div className="container-lg">
-                <SideBar/>
+                <UserSideBar/>
                 <main className="main">
                     <div className="main__top">
                         <h3 className="h3-db">Loan Applications</h3>

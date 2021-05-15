@@ -5,11 +5,11 @@ import {
   useSelector,
 } from 'react-redux';
 
-import Consumer from '../../components/Dashboard/Consumer';
 import FormStep1 from '../../components/steps/FormStep1';
 import FormStep2 from '../../components/steps/FormStep2';
 import FormStep3 from '../../components/steps/FormStep3';
 import FormStep4 from '../../components/steps/FormStep4';
+import Consumer from '../../components/users/Consumer';
 import { applyPaydayLoan } from '../../redux/actions/loanThunk';
 
 const ConsumerContainer = () => {
@@ -103,7 +103,7 @@ const ConsumerContainer = () => {
         e.preventDefault()
         dispatch(applyPaydayLoan(field))
     }
-    const showNotification = useSelector(state => state.notify.show)
+    const showNotification = useSelector(state => state["notify"].show)
     return (
         <Consumer showNotification={showNotification} handleSubmit={handleSubmit} switchForm={switchForm} step={step}/>
     );
