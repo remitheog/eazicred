@@ -1,4 +1,7 @@
-import React, { useEffect } from 'react';
+import React, {
+  useEffect,
+  useState,
+} from 'react';
 
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -6,17 +9,34 @@ import { Link } from 'react-router-dom';
 import Loader from '../../Common/Loader';
 import { getUser } from '../../redux/actions/authThunks';
 import {
+  fetchUserPaydayLoans,
+  fetchUserSmeLoans,
+} from '../../redux/actions/loanThunk';
+import {
   DASHBOARD_HISTORY_URL,
-  DASHBOARD_LOAN_APPLICATION_URL,
   DASHBOARD_URL,
 } from '../../routes/paths';
+import EmptyLoanHistory from './EmptyLoanHistory';
+import LoanDetailsModal from './LoanDetailsModal';
 import UserSideBar from './UserSideBar';
 
-const Dashboard = ({user, auth, loadUser, history}) => {
+function formatDate(date) {
+    return new Date(date).toDateString()
+}
+
+const Dashboard = ({user, auth, loadUser, history, fetchSmeLoans, fetchPaydayLoans, smeLoans, paydayLoans}) => {
     document.title = `Eazicred Dashboard`
+    const [open, setOpen] = useState(false)
+    const [selectedLoan, setSelectedLoan] = useState(null)
+
     useEffect(() => {
         loadUser()
-    }, [loadUser]);
+    }, []);
+
+    const showLoanDetails = id => {
+        setSelectedLoan(id)
+        setOpen(true)
+    }
 
     return auth.loading ? <Loader/> : (
         <div className="dashboard">
@@ -56,10 +76,9 @@ const Dashboard = ({user, auth, loadUser, history}) => {
                     <div className="main__loan-history">
                         <div className="main__loan-history--top">
                             <h3 className="h3-db">Loan History</h3>
-                            {user.SMEloans && (
+                            {user.SMEloans < 30 && (
                                 <button onClick={() => history.push(DASHBOARD_HISTORY_URL)}
-                                        className="view-history">View All</button>
-                            )}
+                                        className="view-history">View All</button>)}
                         </div>
                         {
                             user.SMEloans ? (
@@ -72,64 +91,22 @@ const Dashboard = ({user, auth, loadUser, history}) => {
                                             <span>Amount</span>
                                             <span>Action</span>
                                         </div>
-                                        <div className="loan__row">
-                                            <span>December 1<br/>2021</span>
-                                            <span>#527839</span>
-                                            <span>Loan Repayment</span>
-                                            <span>₦12,293,300</span>
-                                            <button className="view-details">View Details</button>
-                                        </div>
+                                        {user.SMEloans.map(loan => (
+                                            <div className="loan__row">
+                                                <span>{formatDate(loan.created_at)}</span>
+                                                <span>#{loan.id}</span>
+                                                <span>SME Loan</span>
+                                                <span>₦12,293,300</span>
+                                                <button onClick={() => showLoanDetails(loan)}
+                                                        className="view-details">View Details
+                                                </button>
+                                            </div>
+                                        ))}
                                     </div>
-                                    <div className="modal-overlay">
-                                        <div className="modal">
-                                            <div className="modal__top">
-                                                <h3>Loan Details</h3>
-                                                <button className="close">x</button>
-                                            </div>
-                                            <div className="modal__middle">
-                                                <div>
-                                                    <h5>Loan ID</h5>
-                                                    <span>111123454946</span>
-                                                </div>
-                                                <div>
-                                                    <h5>Duration</h5>
-                                                    <span>6 Months</span>
-                                                </div>
-                                                <div>
-                                                    <h5>Loan Status</h5>
-                                                    <span>Overdue</span>
-                                                </div>
-                                                <div>
-                                                    <h5>Over Due Date</h5>
-                                                    <span>16th June 2021</span>
-                                                </div>
-                                            </div>
-                                            <div className="modal__bottom">
-                                                <div>
-                                                    <span>Amount</span>
-                                                    <span>₦12,293,300</span>
-                                                </div>
-                                                <div>
-                                                    <span>Interest</span>
-                                                    <span>₦1,000,000</span>
-                                                </div>
-                                                <div>
-                                                    <span>Total</span>
-                                                    <span>₦13,293,300</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {open && <LoanDetailsModal selectedLoan={selectedLoan} setOpen={setOpen}/>}
                                 </div>
                             ) : (
-                                <div className="main__loan-nohistory">
-                                    <div>
-                                        <img src={"assets/EmptyInbox.svg"} alt="empty box"/>
-                                        <h3 className="h3-db">Loan History</h3>
-                                        <p>You haven't taken any loans yet. <Link to={DASHBOARD_LOAN_APPLICATION_URL}>
-                                            Apply for one now</Link></p>
-                                    </div>
-                                </div>
+                                <EmptyLoanHistory/>
                             )
                         }
                     </div>
@@ -142,13 +119,17 @@ const Dashboard = ({user, auth, loadUser, history}) => {
 const mapState = (state) => {
     return {
         user: state.auth.user,
-        auth: state.auth
+        auth: state.auth,
+        smeLoans: state.userLoans.smeLoans,
+        paydayLoans: state.userLoans.paydayLoans
     }
 }
 
 const mapDispatch = (dispatch) => {
     return {
-        loadUser: () => dispatch(getUser)
+        loadUser: () => dispatch(getUser()),
+        fetchSmeLoans: () => dispatch(fetchUserSmeLoans()),
+        fetchPaydayLoans: () => dispatch(fetchUserPaydayLoans()),
     }
 }
 

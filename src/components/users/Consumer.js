@@ -76,7 +76,7 @@ const Consumer = ({showNotification, switchForm, step, handleSubmit}) => {
                             </div>
                         </div>
                         <div className="main__loan--data">
-                            <form onSubmit={handleSubmit}>
+                            <form onSubmit={handleSubmit} encType="multipart/form-data">
                                 {switchForm()}
                             </form>
                             {showNotification && <LoanModal/>}

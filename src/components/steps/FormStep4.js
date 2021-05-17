@@ -11,11 +11,15 @@ const FormStep4 = ({showMsg, prevStep, handleChange, field}) => {
             <div className="input-groups">
                 <div className="input-group">
                     <label htmlFor="existing_loan">Do you have any existing loan?</label>
-                    <input value={field.existing_loan} onChange={handleChange}  type="text" name="existing_loan" id="existing_loan" placeholder="Yes or No" />
+                    <input checked={field.existing_loan} onChange={handleChange}  type="checkbox" name="existing_loan" id="existing_loan" placeholder="Yes or No" />
                 </div>
                 <div className="input-group">
                     <label htmlFor="existing_loan_type">What is your existing loan type?</label>
-                    <input value={field.existing_loan_type} onChange={handleChange}  type="text" name="existing_loan_type" id="existing_loan_type" placeholder="Mortgae, car, business loan" />
+                    <select  value={field.existing_loan_type} onChange={handleChange}  name="existing_loan_type" id="existing_loan_type">
+                        <option>Select existing loan</option>
+                        <option value={1}>Payday loan</option>
+                        <option value={2}>SME loan</option>
+                    </select>
                 </div>
                 <div className="input-group">
                     <label htmlFor="next_of_kin_surname">Surname of Next of Kin</label>
@@ -43,7 +47,7 @@ const FormStep4 = ({showMsg, prevStep, handleChange, field}) => {
                 </div>
                 <div className="input-group">
                     <label htmlFor="loan_tenure">Loan Duration</label>
-                    <input value={field.loan_tenure} onChange={handleChange}  type="number" name="loan_tenure" id="loan_tenure" placeholder="Specify in months" />
+                    <input value={field.loan_tenure} onChange={handleChange}  type="text" name="loan_tenure" id="loan_tenure" placeholder="Specify in months" />
                 </div>
                 <div className="input-group">
                     <label htmlFor="account_number">Account Number</label>
@@ -67,36 +71,36 @@ const FormStep4 = ({showMsg, prevStep, handleChange, field}) => {
                 </div>
                 <div className="input-group">
                     <label htmlFor="passport">Passport</label>
-                    <input value={field.passport} onChange={handleChange} name={"passport"} type="file" id="passport" />
+                    <input onChange={handleChange} name={"passport"} type="file" id="passport" />
                 </div>
                 <div className="input-group">
                     <label htmlFor="government_ID">Government ID</label>
-                    <input value={field.government_ID} onChange={handleChange} name={'government_ID'}  type="file" id="government_ID" />
+                    <input onChange={handleChange} name={'government_ID'}  type="file" id="government_ID" />
                 </div>
                 <div className="input-group">
                     <label htmlFor="company_id">Company ID</label>
-                    <input value={field.company_id} onChange={handleChange} name={"company_id"} type="file" id="company_id" />
+                    <input onChange={handleChange} name={"company_id"} type="file" id="company_id" />
                 </div>
                 <div className="input-group">
                     <label htmlFor="letter_of_employment">Letter of Employment</label>
-                    <input  value={field.letter_of_employment} onChange={handleChange} name={"letter_of_employment"} type="file" id="letter_of_employment" />
+                    <input onChange={handleChange} name={"letter_of_employment"} type="file" id="letter_of_employment" />
                 </div>
                 <div className="input-group">
-                    <label htmlFor="HR_letter_of_comfirmation">HR Letter of Confrimation</label>
-                    <input  value={field.HR_letter_of_comfirmation} onChange={handleChange} name={"HR_letter_of_comfirmation"} type="file" id="HR_letter_of_comfirmation" />
+                    <label htmlFor="HR_letter_of_comfirmation">HR Letter of Confirmation</label>
+                    <input onChange={handleChange} name={"HR_letter_of_comfirmation"} type="file" id="HR_letter_of_comfirmation" />
                 </div>
                 <div className="input-group">
                     <label htmlFor="utility_bill">Utility Bill</label>
-                    <input value={field.utility_bill} onChange={handleChange} name={"utility_bill"} type="file" id="utility_bill" />
+                    <input onChange={handleChange} name={"utility_bill"} type="file" id="utility_bill" />
                 </div>
             </div>
-            {!showMsg() && (
+            {!showMsg && (
                 <div className="form-btns">
                     <input onClick={() => prevStep()} type="button" className="btn btn-blue btn-transparent" value="Back" />
                     <input type="submit" className="btn btn-blue" value="Submit" />
                 </div>
             )}
-            {showMsg() && <MessageAlert/>}
+            {showMsg && <MessageAlert/>}
         </React.Fragment>
     );
 }

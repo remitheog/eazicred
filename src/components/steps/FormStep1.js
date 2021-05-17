@@ -13,19 +13,16 @@ const FormStep1 = ({nextStep, handleChange, field}) => {
                 </div>
                 <div className="input-group">
                     <label htmlFor="marital_status">Marital Status</label>
-                    <input value={field.marital_status} onChange={handleChange}  type="text" name="marital_status" id="marital_status" placeholder="Enter your marital status"/>
-                </div>
-                <div className="input-group input-group-tel">
-                    <label htmlFor="alt_number">Mobile</label>
-                    <div className="tel">
-                        <select id="alt_number" onChange={handleChange}>
-                            <option value={234}>+234</option>
-                        </select>
-                        <input type="text" value={field.alt_number} name="alt_number" onChange={handleChange} placeholder={"Enter your telephone number"}/>
-                    </div>
+                    <select  value={field.marital_status} onChange={handleChange}  name="marital_status" id="marital_status">
+                        <option>Select Marital Status</option>
+                        <option value={1}>Married</option>
+                        <option value={2}>Divorced</option>
+                        <option value={3}>Dating</option>
+                        <option value={4}>Engaged</option>
+                    </select>
                 </div>
                 <div className="input-group">
-                    <label htmlFor={'state'}>State Of Origin</label>
+                    <label htmlFor={'state'}>State Of origin</label>
                     <input value={field.state} name={"state"} id="state" onChange={handleChange}  type="text" placeholder="Enter your state of origin"/>
                 </div>
                 <div className="input-group">
@@ -33,23 +30,23 @@ const FormStep1 = ({nextStep, handleChange, field}) => {
                     <input value={field.home_address} onChange={handleChange}  type="text" id="home_address" name="home_address" placeholder="enter your home address"/>
                 </div>
                 <div className="input-group">
-                    <label htmlFor="Means_of_ID">Means of ID</label>
-                    <select name="Means_of_ID" id="Means_of_ID" value={field.Means_of_ID} onChange={handleChange} >
+                    <label htmlFor="means_of_id">Means of ID</label>
+                    <select name="Means_of_ID" id="means_of_id" value={field.Means_of_ID} onChange={handleChange}>
                         <option value="driverlicense">Driver License</option>
                         <option value="governmentid">Government ID</option>
                         <option value="passport">Passport</option>
                     </select>
                 </div>
-                <div className="input-group">
-                    <label htmlFor="ID_number">ID Number</label>
-                    <input value={field.ID_number} onChange={handleChange}  type="text" name="ID_number" id="ID_number" placeholder="ID Number"/>
-                </div>
+                {/*<div className="input-group">*/}
+                {/*    <label htmlFor="ID_number">ID Number</label>*/}
+                {/*    <input value={field.ID_number} onChange={handleChange}  type="text" name="ID_number" id="ID_number" placeholder="ID Number"/>*/}
+                {/*</div>*/}
                 <div className="input-group">
                     <label htmlFor="date_issued">Date Issued</label>
                     <input type="date" id="date_issued" name="date_issued" value={field.date_issued} onChange={handleChange}  placeholder="DD / MM / YYYY"/>
                 </div>
                 <div className="input-group">
-                    <label htmlFor="expiry_date">Expiry Date</label>
+                    <label htmlFor="expiry_date">Card Expiry Date</label>
                     <input  value={field.expiry_date} onChange={handleChange}  type="date" id="expiry_date" name="expiry_date" placeholder="DD / MM / YYYY"/>
                 </div>
             </div>

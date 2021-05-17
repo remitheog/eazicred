@@ -13,7 +13,7 @@ const ProfileContainer = () => {
 
     const currentUser = useSelector(state => state.auth.user)
 
-    const state = useSelector(state => state.profile)
+    const state = useSelector(state => state.auth)
 
     const [field, setField] = React.useState({
         firstname:currentUser.firstname,

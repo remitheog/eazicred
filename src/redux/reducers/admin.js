@@ -1,66 +1,59 @@
 import {
+  ADMIN_DATA,
+  ADMIN_TOKEN,
   USER_DATA,
   USER_TOKEN,
 } from '../../constants/local';
 import {
-  GET_USER_FAILURE,
-  GET_USER_REQUEST,
+  ADMIN_LOGIN_FAILED,
+  ADMIN_LOGIN_REQUEST,
+  ADMIN_LOGIN_SUCCESS,
+  ADMIN_REGISTER_FAILED,
+  ADMIN_REGISTER_REQUEST,
+  ADMIN_REGISTER_SUCCESS,
   GET_USER_SUCCESS,
-  LOGIN_FAILED,
-  LOGIN_REQUEST,
-  LOGIN_SUCCESS,
   LOGOUT_REQUEST,
-  REGISTER_FAILED,
-  REGISTER_REQUEST,
-  REGISTER_SUCCESS,
-  UPDATE_PROFILE_FAILURE,
-  UPDATE_PROFILE_REQUEST,
   UPDATE_PROFILE_SUCCESS,
 } from '../actions/types';
 import { initialStates } from '../states';
 
 export const authReducer = (state = initialStates.auth, action) => {
     switch (action.type){
-        case UPDATE_PROFILE_REQUEST:
-        case LOGIN_REQUEST:
-        case GET_USER_REQUEST:
-        case REGISTER_REQUEST:
+
+        case ADMIN_LOGIN_REQUEST:
+        case ADMIN_REGISTER_REQUEST:
             return {
                 ...state,
                 loading: true,
             }
-        case REGISTER_SUCCESS:
+        case ADMIN_REGISTER_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 isAuthenticated: false,
             }
-        case LOGIN_SUCCESS:
-            localStorage.setItem(USER_TOKEN, JSON.stringify(action.payload.token))
-            localStorage.setItem(USER_DATA, JSON.stringify(action.payload.user))
+        case ADMIN_LOGIN_SUCCESS:
+            localStorage.setItem(ADMIN_TOKEN, JSON.stringify(action.payload.token))
+            localStorage.setItem(ADMIN_DATA, JSON.stringify(action.payload.user))
             return {
                 ...state,
                 ...action.payload,
                 isAuthenticated: true,
-                loading: false,
-                error: null
+                loading: false
             }
         case UPDATE_PROFILE_SUCCESS:
         case GET_USER_SUCCESS:
             return {
                 ...state,
-                user: {
-                    ...state.user,
-                    ...action.payload,
-                },
+                ...state.user,
+                ...action.payload,
                 loading: false,
+                // user: action.payload,
                 isAuthenticated: true
             }
-        case UPDATE_PROFILE_FAILURE:
-        case LOGIN_FAILED:
+        case ADMIN_LOGIN_FAILED:
         case LOGOUT_REQUEST:
-        case REGISTER_FAILED:
-        case GET_USER_FAILURE:
+        case ADMIN_REGISTER_FAILED:
             localStorage.removeItem(USER_TOKEN)
             localStorage.removeItem(USER_DATA)
             return {

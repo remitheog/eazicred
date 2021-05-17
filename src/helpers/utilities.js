@@ -1,9 +1,8 @@
-export const tokenConfig = getState => {
+export const tokenConfig = (getState, type = "application/json") => {
     const token = getState().auth.token
     const config = {
         headers: {
-            "Content-Type": "application/json",
-            accept: "application/json",
+            "Content-Type": type,
             timeout: 30,
             timeoutErrorMessage: "Request could not be completed (timeout(30))"
         }

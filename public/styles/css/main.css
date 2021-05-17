@@ -153,7 +153,6 @@ section {
 
 .btn {
   cursor: pointer;
-  display: inline-block;
   border: none;
   outline: none;
   font-family: inherit;
@@ -166,10 +165,34 @@ section {
   transition: .3s ease;
 }
 
+.alert {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 1.3rem;
+  padding: 1.4rem 2rem;
+  border-radius: 5px;
+  width: 15rem;
+  display: flex;
+  justify-content: center;
+  transition: .3s ease;
+}
+
+.alert-red {
+  color: #FFFFFF;
+  background-color: #f14657;
+  border: 1px solid #f14657;
+}
+
 .btn-blue {
   color: #FFFFFF;
   background-color: #29ABE2;
   border: 1px solid #29ABE2;
+}
+
+.alert-red:hover {
+  opacity: .8;
 }
 
 .btn-blue:hover {
@@ -236,7 +259,7 @@ section {
 }
 
 .nav__btns--mobile {
-  display: none;
+  display: block;
 }
 
 @media screen and (max-width: 880px) {
@@ -247,7 +270,6 @@ section {
     justify-content: flex-start;
   }
   .nav__list {
-    display: none;
     background-color: #FFFFFF;
     position: fixed;
     top: 0;
@@ -275,7 +297,7 @@ section {
     display: none;
   }
   .nav__btns--mobile {
-    display: block;
+    display: none;
   }
   .nav__btns--mobile a {
     margin: 1.3rem 0;
@@ -1994,6 +2016,12 @@ section {
   font-weight: 900;
 }
 
+.dashboard .main .error {
+  padding: 0 5rem;
+  width: 75rem;
+  max-width: 100%;
+}
+
 .dashboard .main .success {
   padding: 0 5rem;
   width: 75rem;
@@ -2003,6 +2031,13 @@ section {
 .dashboard .main .success div {
   color: #149D69;
   background-color: #13D93424;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+}
+
+.dashboard .main .error div {
+  color: #ffffff;
+  background-color: #d9133e;
   padding: 1rem 2rem;
   border-radius: 5px;
 }
@@ -2114,6 +2149,9 @@ section {
     padding: 0 2rem;
   }
   .dashboard .main .success {
+    width: 100%;
+  }
+  .dashboard .main .error {
     width: 100%;
   }
   .dashboard .main__form {
@@ -2609,4 +2647,130 @@ section {
 .main__agents .modal-overlay .modal h3, .main__agents .modal-overlay .modal h5 {
   color: #18214D;
   font-weight: 900;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #FFFFFF;
+  width: 50rem;
+  max-width: 100%;
+  padding: 4rem 3rem;
+  border-radius: 5px;
+}
+
+.modal::before {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: #FFFFFF;
+}
+
+.modal h3 {
+  margin-bottom: .8rem;
+  color: #18214D;
+}
+
+.modal span {
+  color: #000000;
+}
+
+.modal__top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.modal button {
+  cursor: pointer;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  background-color: #F2F0F4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.modal__middle {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.modal__middle div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.modal__middle h5 {
+  color: #18214D;
+  font-size: 1.3rem;
+}
+
+.modal__bottom {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #EBEBEB69;
+}
+
+.modal__bottom div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.modal__bottom div:last-child {
+  font-weight: 900;
+}
+
+.modal-inner {
+  /*   display: none; */
+}
+
+.modal-preloader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 5rem;
+  height: 5rem;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+.modal-preloader::before, .modal-preloader::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+.modal-preloader::before {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(90deg, #29ABE2 0%, #005174 100%);
+  animation: spin 3s infinite linear;
+}
+
+.modal-preloader::after {
+  width: 90%;
+  height: 90%;
+  background-color: #FFFFFF;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

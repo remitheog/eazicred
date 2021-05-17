@@ -8,6 +8,19 @@ export const initialStates = {
         user: null,
         token: JSON.parse(localStorage.getItem(USER_TOKEN))
     },
+    userLoans:{
+        loading: false,
+        selectedSme: {
+            loan:{},
+            loading:false
+        },
+        selectedPayday: {
+            loan:{},
+            loading:false
+        },
+        smeLoans: [],
+        paydayLoans: [],
+    },
     sme:{
         data: null,
         loading: false,

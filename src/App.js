@@ -10,6 +10,7 @@ import Footer from './Common/Footer';
 import Navbar from './Common/Navbar';
 import ProtectedRoute from './Common/ProtectedRoute';
 import About from './components/About';
+import AdminLogin from './components/admin/AdminLogin';
 import Agents from './components/admin/Agents';
 import Loans from './components/admin/Loans';
 import Users from './components/admin/Users';
@@ -31,6 +32,7 @@ import {
   ABOUT_URL,
   ADMIN_AGENTS_URL,
   ADMIN_LOANS_URL,
+  ADMIN_LOGIN_URL,
   ADMIN_USERS_URL,
   DASHBOARD_CONSUMER_LOAN_APPLICATION_URL,
   DASHBOARD_HISTORY_URL,
@@ -62,7 +64,8 @@ function App() {
         DASHBOARD_HISTORY_URL,
         ADMIN_AGENTS_URL,
         ADMIN_USERS_URL,
-        ADMIN_LOANS_URL
+        ADMIN_LOANS_URL,
+        ADMIN_LOGIN_URL
     ]
     return (
         <React.Fragment>
@@ -77,6 +80,7 @@ function App() {
                 <Route path={FAQS_URL} component={Faqs}/>
                 <Route path={TERMS_URL} component={Terms}/>
                 <Route path={PRIVACY_URL} component={Privacy}/>
+                <Route path={ADMIN_LOGIN_URL} component={AdminLogin}/>
                 <ProtectedRoute exact path={DASHBOARD_URL} component={Dashboard}/>
                 <ProtectedRoute exact path={ADMIN_AGENTS_URL} component={Agents}/>
                 <ProtectedRoute exact path={ADMIN_USERS_URL} component={Users}/>

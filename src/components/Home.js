@@ -133,7 +133,7 @@ const Home = () => {
                         </div>
 
                         <div>
-                            <h3 className="h-3">Eazi30/31</h3>
+                            <h3 className="h-3">Eazi 30/31</h3>
                             <p>Perfect loan for salary earners. Get between N50,000 – N200,000 with a repayment duration
                                 of 3 months. Perfect for emergencies and consumer items.</p>
                         </div>
@@ -156,9 +156,7 @@ const Home = () => {
                         <div className="eligibility__text-box">
                             <h2 className="h-2">Check If You Are Eligible</h2>
                             <p className="p-2">For An EaziCred Loan</p>
-
                             <p className="p">To be eligible for an Eazicred loan:</p>
-
                             <ul>
                                 <li>You must be between 22 – 58 years old</li>
                                 <li>You must be a resident of Lagos State</li>
@@ -179,6 +177,7 @@ const Home = () => {
                     <p className="p-2">About Us</p>
                     <div className="testimonials__inner">
                         <div className="testimonials__list">
+
                             <div className="testimonial">
                                 <div className="testimonial__user-profile">
                                     <img src={"assets/george.png"} alt="George Anderson"/>
@@ -220,6 +219,7 @@ const Home = () => {
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                         <div className="testimonials__overview">
                             <div className="arrow-btns">

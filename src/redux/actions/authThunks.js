@@ -39,6 +39,7 @@ export const loginUser = (data) => (dispatch, getState) => {
     axiosInstance.post(LOGIN_ENDPOINT, {...data}, tokenConfig(getState))
         .then(res => {
             dispatch(loginSuccess(res.data.data))
+            dispatch(getUser)
         })
         .catch(err => {
             dispatch(loginFailed(showError(err, "Please check and try again")))

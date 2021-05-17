@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {
+  connect,
   useDispatch,
   useSelector,
 } from 'react-redux';
@@ -12,60 +13,54 @@ import FormStep4 from '../../components/steps/FormStep4';
 import Consumer from '../../components/users/Consumer';
 import { applyPaydayLoan } from '../../redux/actions/loanThunk';
 
-const ConsumerContainer = () => {
+const ConsumerContainer = ({user}) => {
     const [field, setField] = React.useState({
-        user_id: '',
+        user_id: user.id,
         BVN: '',
         DOB: '',
-        Means_of_ID: '',
-        ID_number: '',
+        Means_of_ID: 'governmentid',
         date_issued: '',
         expiry_date: '',
-        alt_number: '',
         home_address: '',
         landmark: '',
         LGA_of_residence: '',
         state: '',
-        length_of_time_at_current_address: '',
-        marital_status: '',
-        employment_status: '',
+        length_of_time_at_current_adress: 2,
+        marital_status: 1,
+        employment_status: 1,
         current_employer: '',
         current_employer_address: '',
         current_employer_landmark: '',
         current_employer_LGA: '',
         current_employer_state: '',
         current_employer_office_number: '',
-        staff_id: '',
         department: '',
+        ID_number: '',
         job_title: '',
-        date_employed: '',
-        previous_employer: '',
-        previous_employer_address: '',
-        length_of_time_with_previous_employer: '',
-        jobs_in_last_5_years: '',
+        jobs_in_last_5_years: 2,
         current_paydate: '',
-        existing_loan: '',
-        existing_loan_type: '',
+        existing_loan: false,
+        existing_loan_type: 1,
         next_of_kin_surname: '',
         next_of_kin_firstname: '',
         next_of_kin_relationship: '',
         next_of_kin_phone: '',
         next_of_kin_address: '',
-        loan_amount: '',
-        loan_tenure: '',
+        loan_amount: 1000000,
+        loan_tenure: '12',
         account_number: '',
         account_name: '',
         bank_name: '',
         hear_about_us: '',
-        passport: '',
-        government_ID: '',
-        company_id: '',
-        letter_of_employment: '',
-        HR_letter_of_comfirmation: '',
-        utility_bill: '',
-        created_at: '',
+        passport: null,
+        government_ID: null,
+        company_id: null,
+        letter_of_employment: null,
+        HR_letter_of_comfirmation: null,
+        utility_bill: null,
         draft: false
     })
+
     const [step, setStep] = React.useState(1)
     const nextStep = () => {
         setStep(step + 1)
@@ -75,13 +70,20 @@ const ConsumerContainer = () => {
     }
 
     const handleChange = (e) => {
-        setField({...field, [e.target.name]: e.target.value})
+        const {name, value, type, checked} = e.target
+        switch(type){
+            case "checkbox":
+                setField({...field, [name]: checked})
+                break
+            case "file":
+                setField({...field, [name]: e.target.files[0]})
+                break
+            default:
+                setField({...field, [name]: value})
+                break
+        }
     }
     const showMsg = useSelector(state => state.notify.message.show)
-    const handleShowMsg = () => {
-        setStep(4)
-        return showMsg
-    }
 
     document.title = "Eazicred - Consumer Loan"
     const switchForm = () => {
@@ -93,20 +95,28 @@ const ConsumerContainer = () => {
             case 3:
                 return <FormStep3 field={field} handleChange={handleChange} nextStep={nextStep} prevStep={prevStep}/>
             case 4:
-                return <FormStep4 showMsg={handleShowMsg} field={field} handleChange={handleChange} prevStep={prevStep}/>
-            default:
-                return <FormStep1 nextStep={nextStep}  field={field} handleChange={handleChange}/>
+                return <FormStep4 field={field} handleChange={handleChange} showMsg={showMsg} prevStep={prevStep}/>
         }
     }
+
     const dispatch = useDispatch()
+
     const handleSubmit = (e) => {
         e.preventDefault()
         dispatch(applyPaydayLoan(field))
     }
+
     const showNotification = useSelector(state => state["notify"].show)
+
     return (
         <Consumer showNotification={showNotification} handleSubmit={handleSubmit} switchForm={switchForm} step={step}/>
     );
 }
 
-export default ConsumerContainer;
+
+const mapState = (state) => {
+    return {
+        user: state.auth.user,
+    }
+}
+export default connect(mapState)(ConsumerContainer);
