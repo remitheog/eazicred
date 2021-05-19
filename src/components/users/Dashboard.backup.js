@@ -4,20 +4,24 @@ import { connect } from 'react-redux';
 
 import Loader from '../../Common/Loader';
 import { getUser } from '../../redux/actions/authThunks';
+import { fetchAllUserLoans } from '../../redux/actions/loanThunk';
+import { DASHBOARD_HISTORY_URL } from '../../routes/paths';
 import DashboardContainer from './DashboardContainer';
+import EmptyLoanHistory from './EmptyLoanHistory';
 import LoansList from './LoansList';
 
-const Dashboard = ({user, auth, loadUser, history}) => {
+const Dashboard = ({user, fetchAllLoans, auth, loadUser, history, loans}) => {
     document.title = `Eazicred Dashboard`
 
     useEffect(() => {
         loadUser()
+        fetchAllLoans()
     }, []);
 
-
+    const loanData = [...loans.smeLoans, ...loans.paydayLoans]
 
     const isLoading = () => {
-        return auth.loading
+        return auth.loading && loans.loading
     }
     return isLoading() ? <Loader/> : (
         <DashboardContainer>
@@ -41,7 +45,21 @@ const Dashboard = ({user, auth, loadUser, history}) => {
                     <span>&#8358;20,293,300</span>
                 </div>
             </div>
-            <LoansList/>
+            <div className="main__loan-history">
+                <div className="main__loan-history--top">
+                    <h3 className="h3-db">Loan History</h3>
+                    {user.SMEloans < 30 && (
+                        <button onClick={() => history.push(DASHBOARD_HISTORY_URL)}
+                                className="view-history">View All</button>)}
+                </div>
+                {
+                    loanData.length > 0 ? (
+                        <LoansList loanData={loanData}/>
+                    ) : (
+                        <EmptyLoanHistory/>
+                    )
+                }
+            </div>
         </DashboardContainer>
     )
 }
@@ -50,12 +68,14 @@ const mapState = (state) => {
     return {
         user: state.auth.user,
         auth: state.auth,
+        loans: state.userLoans,
     }
 }
 
 const mapDispatch = (dispatch) => {
     return {
         loadUser: () => dispatch(getUser()),
+        fetchAllLoans: () => dispatch(fetchAllUserLoans()),
     }
 }
 
