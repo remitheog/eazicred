@@ -25,7 +25,7 @@ const ConsumerContainer = ({user}) => {
         landmark: '',
         LGA_of_residence: '',
         state: '',
-        length_of_time_at_current_adress: 2,
+        length_of_time_at_current_address: 2,
         marital_status: 1,
         employment_status: 1,
         current_employer: '',
@@ -52,13 +52,8 @@ const ConsumerContainer = ({user}) => {
         account_name: '',
         bank_name: '',
         hear_about_us: '',
-        passport: null,
-        government_ID: null,
-        company_id: null,
-        letter_of_employment: null,
-        HR_letter_of_comfirmation: null,
-        utility_bill: null,
-        draft: false
+        draft: false,
+        type: 1
     })
 
     const [step, setStep] = React.useState(1)

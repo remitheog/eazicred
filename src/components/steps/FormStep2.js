@@ -21,7 +21,7 @@ const FormStep2 = ({nextStep, prevStep, handleChange, field}) => {
                 </div>
                 <div className="input-group">
                     <label htmlFor='length_of_time_at_current_address'>How Long Have You Lived Here ?</label>
-                    <select value={field.length_of_time_at_current_adress} onChange={handleChange}  name="length_of_time_at_current_adress" id="length_of_time_at_current_address">
+                    <select value={field.length_of_time_at_current_address} onChange={handleChange}  name="length_of_time_at_current_address" id="length_of_time_at_current_address">
                         <option>Select Duration</option>
                         <option value={0}>Less than a year</option>
                         <option value={1}>1 Year</option>

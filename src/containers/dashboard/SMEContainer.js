@@ -19,13 +19,24 @@ const SMEContainer = () => {
         "TIN_number": "",
         "business_up_time": "",
         "purpose_of_loan": "",
+        'draft': false,
+        "type": 2
     })
 
     const step = React.useState(1)[0]
 
     const handleChange = (e) => {
-        setField({...field, [e.target.name]: e.target.value})
+        const {name, value, type, checked} = e.target
+        switch(type){
+            case "checkbox":
+                setField({...field, [name]: checked})
+                break
+            default:
+                setField({...field, [name]: value})
+                break
+        }
     }
+
     const dispatch = useDispatch()
 
     const handleSubmit = (e) => {

@@ -16,9 +16,13 @@ const FormStep4 = ({showMsg, prevStep, handleChange, field}) => {
                 <div className="input-group">
                     <label htmlFor="existing_loan_type">What is your existing loan type?</label>
                     <select  value={field.existing_loan_type} onChange={handleChange}  name="existing_loan_type" id="existing_loan_type">
-                        <option>Select existing loan</option>
-                        <option value={1}>Payday loan</option>
-                        <option value={2}>SME loan</option>
+                        {[ 'MORTGAGE', 'OVERDRAFT', 'CARLOAN',
+                            'BUSINESSLOAN',
+                            'CREDITCARDLOAN',
+                            'PERSONALLOAN' ].map(value =>
+                            <option value={value.toLowerCase()}>{value.toLowerCase()}</option>
+                        )}
+
                     </select>
                 </div>
                 <div className="input-group">
@@ -68,30 +72,6 @@ const FormStep4 = ({showMsg, prevStep, handleChange, field}) => {
                 <div className="input-group">
                     <label htmlFor="bvn">BVN</label>
                     <input value={field.BVN} onChange={handleChange}  type="text" id="bvn" name="BVN" placeholder="Enter your BVN" />
-                </div>
-                <div className="input-group">
-                    <label htmlFor="passport">Passport</label>
-                    <input onChange={handleChange} name={"passport"} type="file" id="passport" />
-                </div>
-                <div className="input-group">
-                    <label htmlFor="government_ID">Government ID</label>
-                    <input onChange={handleChange} name={'government_ID'}  type="file" id="government_ID" />
-                </div>
-                <div className="input-group">
-                    <label htmlFor="company_id">Company ID</label>
-                    <input onChange={handleChange} name={"company_id"} type="file" id="company_id" />
-                </div>
-                <div className="input-group">
-                    <label htmlFor="letter_of_employment">Letter of Employment</label>
-                    <input onChange={handleChange} name={"letter_of_employment"} type="file" id="letter_of_employment" />
-                </div>
-                <div className="input-group">
-                    <label htmlFor="HR_letter_of_comfirmation">HR Letter of Confirmation</label>
-                    <input onChange={handleChange} name={"HR_letter_of_comfirmation"} type="file" id="HR_letter_of_comfirmation" />
-                </div>
-                <div className="input-group">
-                    <label htmlFor="utility_bill">Utility Bill</label>
-                    <input onChange={handleChange} name={"utility_bill"} type="file" id="utility_bill" />
                 </div>
             </div>
             {!showMsg && (

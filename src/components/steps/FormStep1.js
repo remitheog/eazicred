@@ -14,11 +14,11 @@ const FormStep1 = ({nextStep, handleChange, field}) => {
                 <div className="input-group">
                     <label htmlFor="marital_status">Marital Status</label>
                     <select  value={field.marital_status} onChange={handleChange}  name="marital_status" id="marital_status">
-                        <option>Select Marital Status</option>
-                        <option value={1}>Married</option>
-                        <option value={2}>Divorced</option>
-                        <option value={3}>Dating</option>
-                        <option value={4}>Engaged</option>
+                        <option value={1}>SINGLE</option>
+                        <option value={2}>MARRIED</option>
+                        <option value={3}>DIVORCED</option>
+                        <option value={4}>SEPARATED</option>
+                        <option value={5}>WIDOWED</option>
                     </select>
                 </div>
                 <div className="input-group">
@@ -37,10 +37,10 @@ const FormStep1 = ({nextStep, handleChange, field}) => {
                         <option value="passport">Passport</option>
                     </select>
                 </div>
-                {/*<div className="input-group">*/}
-                {/*    <label htmlFor="ID_number">ID Number</label>*/}
-                {/*    <input value={field.ID_number} onChange={handleChange}  type="text" name="ID_number" id="ID_number" placeholder="ID Number"/>*/}
-                {/*</div>*/}
+                <div className="input-group">
+                    <label htmlFor="ID_number">ID Number</label>
+                    <input value={field.ID_number} onChange={handleChange}  type="text" name="ID_number" id="ID_number" placeholder="ID Number"/>
+                </div>
                 <div className="input-group">
                     <label htmlFor="date_issued">Date Issued</label>
                     <input type="date" id="date_issued" name="date_issued" value={field.date_issued} onChange={handleChange}  placeholder="DD / MM / YYYY"/>

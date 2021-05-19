@@ -7,6 +7,7 @@ import {
   DASHBOARD_LOAN_APPLICATION_URL,
   TERMS_URL,
 } from '../routes/paths';
+import LoanCalculator from './LoanCalculator';
 import OnPageSignUp from './OnPageSignUp';
 
 const Home = () => {
@@ -25,8 +26,8 @@ const Home = () => {
                                     <button className="btn btn-blue">Get Started</button>
                             </form>
 
-                            <p>By clicking "Get Started" you confirming that you agree with our following <Link to={TERMS_URL}>Terms
-                                and Conditions</Link>
+                            <p>By clicking "Get Started" you confirming that you agree with our following
+                                <Link to={TERMS_URL}>Terms and Conditions</Link>
                             </p>
                         </div>
                         <div className="hero__image">
@@ -244,50 +245,7 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-
-            <section className="calculator">
-                <div className="container">
-                    <div className="calculator__inner">
-                        <div>
-                            <div className="calculation">
-                                <h2 className="h-2">Loan Calculator</h2>
-                                <p>Quickly calculate, how much you have to pay back</p>
-                                <form className="form">
-                                    <div className="form-grid">
-                                        <div className="calculation__amount">
-                                            <label>Amount</label>
-                                            <input type="text" placeholder="₦0.00" id="amount"/>
-                                        </div>
-                                        <div className="calculation__period">
-                                            <label>Period</label>
-                                            <input type="number" id="period" placeholder="Month(s)"/>
-                                        </div>
-                                        <div className="calculation__interest">
-                                            <label>Interest Rate</label>
-                                            <input type="number" id="interest" placeholder="In numbers only"/>
-                                        </div>
-                                    </div>
-                                    <input type="submit" className="btn btn-dark" value="Calculate"/>
-                                </form>
-                            </div>
-                            <div className="results">
-                                <div>
-                                    <label>Interest Rate</label>
-                                    <p className="results-interest">7.5%</p>
-                                </div>
-                                <div>
-                                    <label>Monthly Payment</label>
-                                    <p className="results-payment">₦0.00</p>
-                                </div>
-                                <div>
-                                    <label>Duration</label>
-                                    <p className="results-duration">1 month</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <LoanCalculator/>
             <OnPageSignUp/>
         </React.Fragment>
     )

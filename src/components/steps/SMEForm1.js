@@ -33,6 +33,10 @@ const SmeForm1 = ({showMsg, field, handleChange}) => {
                     <label htmlFor="purpose_of_loan">Select Purpose Of Loan</label>
                     <input value={field.purpose_of_loan} onChange={handleChange} type="text" name="purpose_of_loan" id="purpose_of_loan" placeholder="Purpose of Loan" />
                 </div>
+                <div className="input-group">
+                    <label htmlFor="draft">Save as Draft?</label>
+                    <input checked={field.draft} onChange={handleChange}  type="checkbox" name="draft" id="draft"/>
+                </div>
             </div>
             {showMsg && <MessageAlert/>}
             {!showMsg && <input type="submit" className="btn btn-blue" value="Submit" />}

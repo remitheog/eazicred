@@ -1,6 +1,6 @@
 import {
+  FETCH_USER_LOANS_REQUEST,
   FETCH_USER_PAYDAY_LOAN_FAILURE,
-  FETCH_USER_PAYDAY_LOAN_REQUEST,
   FETCH_USER_PAYDAY_LOAN_SUCCESS,
   FETCH_USER_SELECTED_PAYDAY_LOAN_FAILURE,
   FETCH_USER_SELECTED_PAYDAY_LOAN_REQUEST,
@@ -9,7 +9,6 @@ import {
   FETCH_USER_SELECTED_SME_LOAN_REQUEST,
   FETCH_USER_SELECTED_SME_LOAN_SUCCESS,
   FETCH_USER_SME_LOAN_FAILURE,
-  FETCH_USER_SME_LOAN_REQUEST,
   FETCH_USER_SME_LOAN_SUCCESS,
 } from '../actions/types';
 import { initialStates } from '../states';
@@ -28,7 +27,7 @@ export const userLoans = (state= initialStates.userLoans, action) => {
         case FETCH_USER_SELECTED_SME_LOAN_SUCCESS:
             return {
                 ...state,
-                selectedPayday: {
+                selectedSme: {
                     loading: false,
                     loan: action.payload
                 }
@@ -37,7 +36,7 @@ export const userLoans = (state= initialStates.userLoans, action) => {
         case FETCH_USER_SELECTED_SME_LOAN_FAILURE:
             return {
                 ...state,
-                selectedPayday: {
+                selectedSme: {
                     loading: false,
                     loan: {}
                 }
@@ -70,8 +69,7 @@ export const userLoans = (state= initialStates.userLoans, action) => {
                 }
             }
 
-        case FETCH_USER_PAYDAY_LOAN_REQUEST:
-        case FETCH_USER_SME_LOAN_REQUEST:
+        case FETCH_USER_LOANS_REQUEST:
             return {
                 ...state,
                  loading: true
@@ -80,14 +78,14 @@ export const userLoans = (state= initialStates.userLoans, action) => {
             return {
                 ...state,
                 loading: false,
-                sme: action.payload,
+                smeLoans: action.payload,
             }
 
         case FETCH_USER_PAYDAY_LOAN_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                payday: action.payload
+                paydayLoans: action.payload
             }
 
         case FETCH_USER_PAYDAY_LOAN_FAILURE:

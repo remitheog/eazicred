@@ -29,7 +29,9 @@ const UserSideBar = () => {
     }
     return (
         <aside className="sidebar">
-            <Link to={DASHBOARD_URL} className="sidebar__logo">EaziCred</Link>
+            <Link to={DASHBOARD_URL} className="sidebar__logo">
+                <img src={"assets/logo-black.png"} alt="eazicred logo"/>
+            </Link>
             <h4 className="sidebar__h4">Main</h4>
             <ul className="sidebar__list">
                 <li>

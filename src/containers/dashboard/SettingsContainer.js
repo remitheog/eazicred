@@ -6,7 +6,7 @@ import {
 } from 'react-redux';
 
 import Setting from '../../components/users/Setting';
-import { changePassword } from '../../redux/actions/dashboard/settingThunk';
+import { changePassword } from '../../redux/actions/users/settingThunk';
 
 const SettingsContainer = () => {
     document.title = 'Manage your account settings'

@@ -259,7 +259,7 @@ section {
 }
 
 .nav__btns--mobile {
-  display: block;
+  display: none;
 }
 
 @media screen and (max-width: 880px) {
@@ -297,7 +297,7 @@ section {
     display: none;
   }
   .nav__btns--mobile {
-    display: none;
+    display: block;
   }
   .nav__btns--mobile a {
     margin: 1.3rem 0;
@@ -2659,16 +2659,6 @@ section {
   max-width: 100%;
   padding: 4rem 3rem;
   border-radius: 5px;
-}
-
-.modal::before {
-   content: '';
-   position: absolute;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   background-color: #FFFFFF;
 }
 
 .modal h3 {

@@ -10,9 +10,14 @@ const FormStep3 = ({nextStep, prevStep, handleChange, field}) => {
                 <div className="input-group">
                     <label htmlFor="employment_status">Employment Status</label>
                     <select  value={field.employment_status} onChange={handleChange}  name="employment_status" id="employment_status">
-                        <option>Select Employment Status</option>
-                        <option value={1}>Employed</option>
-                        <option value={2}>Unemployed</option>
+                        {[
+                            'FULLTIME',
+                            'PARTIME',
+                            'RETIRED',
+                            'SELFEMPLOYED',
+                            'TEMPCONTRACT',
+                            'OUTSOURCEDCONTRACT'
+                        ].map(val => <option value={val.toLowerCase()}>{val.toLowerCase()}</option>)}
                     </select>
                 </div>
                 <div className="input-group">
@@ -47,10 +52,10 @@ const FormStep3 = ({nextStep, prevStep, handleChange, field}) => {
                     <label htmlFor="department">Department</label>
                     <input value={field.department} onChange={handleChange}  type="text" name="department" id="department" placeholder="Department" />
                 </div>
-                {/*<div className="input-group">*/}
-                {/*    <label htmlFor="job_title">Job Title</label>*/}
-                {/*    <input value={field.job_title} onChange={handleChange}  type="text" name="job_title" id="job_title" placeholder="Job Title" />*/}
-                {/*</div>*/}
+                <div className="input-group">
+                    <label htmlFor="job_title">Job Title</label>
+                    <input value={field.job_title} onChange={handleChange}  type="text" name="job_title" id="job_title" placeholder="Job Title" />
+                </div>
                 <div className="input-group">
                     <label htmlFor="jobs_in_last_5_years">Number of Jobs</label>
                     <input  value={field.jobs_in_last_5_years} onChange={handleChange}  type="number" name="jobs_in_last_5_years" id="jobs_in_last_5_years" placeholder="Number of jobs in the last five years" />

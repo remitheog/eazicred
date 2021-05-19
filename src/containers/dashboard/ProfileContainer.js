@@ -6,7 +6,7 @@ import {
 } from 'react-redux';
 
 import Profile from '../../components/users/Profile';
-import { changeProfile } from '../../redux/actions/dashboard/profileThunk';
+import { changeProfile } from '../../redux/actions/users/profileThunk';
 
 const ProfileContainer = () => {
     document.title = "Update your Eazicred Profile"
