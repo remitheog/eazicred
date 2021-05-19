@@ -12,6 +12,28 @@ import OnPageSignUp from './OnPageSignUp';
 
 const Home = () => {
     document.title = "EaziCred - Better Loan Offers"
+    React.useEffect(() => {
+        window.$('.stats__inner-mobile').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            dots: true,
+            prevArrow: false,
+            nextArrow: false
+        });
+
+        window.$('.loans__inner-mobile').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            dots: true,
+            prevArrow: false,
+            nextArrow: false
+        });
+    }, [])
+
     return (
         <React.Fragment>
             <header>
@@ -36,7 +58,6 @@ const Home = () => {
                     </div>
                 </div>
             </header>
-
             <section className="stats stats-pc">
                 <div className="container-sm">
                     <div className="stats__inner">
@@ -55,7 +76,6 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-
             <section className="stats stats-mobile">
                 <div className="container-sm">
                     <div className="stats__inner-mobile">
@@ -74,7 +94,6 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-
             <section className="choice">
                 <div className="container">
                     <div className="choice__inner">
@@ -97,7 +116,6 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-
             <section className="loans loans-pc">
                 <div className="container">
                     <div className="loans__inner-pc">
@@ -122,7 +140,6 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-
             <section className="loans loans-mobile">
                 <div className="container">
                     <div className="loans__inner-mobile">
@@ -147,7 +164,6 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-
             <section className="eligibility">
                 <div className="container">
                     <div className="eligibility__inner">
@@ -171,7 +187,6 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-
             <section className="testimonials">
                 <div className="container">
                     <h2 className="h-2">What People Are Saying</h2>

@@ -55,7 +55,7 @@ const Register = ({handleChange, field, handleSubmit, error}) => {
                                     us</Link></p>
                             {!error.show &&
                             <input type="submit" value="Create Account" id='submit' className="btn btn-blue"/>}
-                            {error.show && <MessageAlert><input type="button" value={error.message} disabled
+                            {error.show && <MessageAlert><input type="button" value={"Error occurred, try using another email or try again later"} disabled
                                                                 className="alert alert-red"/></MessageAlert>}
                             <p>Already Have An Account? <Link to={LOGIN_URL} className="primary-color">Log In</Link></p>
                         </form>

@@ -47,7 +47,7 @@ const LoansList = ({loans, fetchAllLoans}) => {
         }
     }
     const location = useLocation()
-    const loanData = [...loans.smeLoans, ...loans.paydayLoans]
+    const loanData = [...loans.paydayLoans]
     return isLoading() ? <Loader/> : loanData.length > 0 ? (
         <div className="main__loan-history">
             <div className="main__loan-history--top">

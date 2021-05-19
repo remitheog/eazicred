@@ -5,7 +5,10 @@ import {
   useDispatch,
   useSelector,
 } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import {
+  Redirect,
+  useHistory,
+} from 'react-router-dom';
 
 import Register from '../components/Register';
 import { registerUser } from '../redux/actions/authThunks';
@@ -28,10 +31,11 @@ const RegisterContainer = () => {
     const handleChange = ({target}) => {
         setField({...field, [target.name]: target.value})
     }
+    const history = useHistory()
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch(registerUser(field))
+        dispatch(registerUser(field, history))
     }
     if (isAuthenticated) {
         return <Redirect to={DASHBOARD_URL}/>

@@ -1,5 +1,6 @@
 import React from 'react';
-import {currency} from "./LoansList";
+
+import { currency } from './LoansList';
 
 export const loanStatus = status => {
     switch (status) {
@@ -16,7 +17,12 @@ export const loanStatus = status => {
 
 
 const LoanDetailsModal = ({setOpen, loan, setLoan}) => {
-
+    function percentage(num) {
+        return (num/100)*20;
+    }
+    function accuredAmount(amount, time) {
+        return amount * (percentage(amount) * time)
+    }
     const handleClose = () => {
         setOpen(false)
         setLoan(null)
@@ -32,11 +38,11 @@ const LoanDetailsModal = ({setOpen, loan, setLoan}) => {
                 <div className="modal__middle">
                     <div>
                         <h5>Loan ID</h5>
-                        <span>{id}</span>
+                        <span>#{id}</span>
                     </div>
                     <div>
                         <h5>Duration</h5>
-                        <span>{loan.loan_tenure}</span>
+                        <span>{loan.loan_tenure} months</span>
                     </div>
                     <div>
                         <h5>Loan Status</h5>
@@ -44,21 +50,21 @@ const LoanDetailsModal = ({setOpen, loan, setLoan}) => {
                     </div>
                     <div>
                         <h5>Over Due Date</h5>
-                        <span>16th June 2021</span>
+                        <span>{new Date(loan.expiry_date).toDateString()}</span>
                     </div>
                 </div>
                 <div className="modal__bottom">
                     <div>
                         <span>Amount</span>
-                        <span>{loan.type === 1 && currency.format(loan.loan_amount)}</span>
+                        <span>{currency.format(loan.loan_amount)}</span>
                     </div>
                     <div>
                         <span>Interest</span>
-                        <span>%7.5</span>
+                        <span>{currency.format(percentage(loan.loan_amount))}</span>
                     </div>
                     <div>
                         <span>Total</span>
-                        <span>₦13,293,300</span>
+                        <span>{currency.format(accuredAmount(loan.loan_amount, loan.loan_tenure))}</span>
                     </div>
                 </div>
             </div>

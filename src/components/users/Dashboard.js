@@ -7,18 +7,26 @@ import { getUser } from '../../redux/actions/authThunks';
 import DashboardContainer from './DashboardContainer';
 import LoansList from './LoansList';
 
-const Dashboard = ({user, auth, loadUser, history}) => {
+const Dashboard = ({user, auth, loadUser, loans}) => {
     document.title = `Eazicred Dashboard`
 
     useEffect(() => {
         loadUser()
     }, []);
 
-
-
     const isLoading = () => {
         return auth.loading
     }
+
+    const totalLoans = () => {
+        let total = 0
+        for (let i = 0; i < loans.length; i++) {
+            total += Object.values(loans)[i].loan_amount
+        }
+        console.log(total)
+        return total
+    }
+
     return isLoading() ? <Loader/> : (
         <DashboardContainer>
             <div className="main__middle">
@@ -34,11 +42,11 @@ const Dashboard = ({user, auth, loadUser, history}) => {
                 </div>
                 <div>
                     <p>Total Received</p>
-                    <span>&#8358;6,299,300</span>
+                    <span>&#8358;{totalLoans()}</span>
                 </div>
                 <div>
                     <p>Total Paid</p>
-                    <span>&#8358;20,293,300</span>
+                    <span>&#8358;{totalLoans()}</span>
                 </div>
             </div>
             <LoansList/>
@@ -50,6 +58,7 @@ const mapState = (state) => {
     return {
         user: state.auth.user,
         auth: state.auth,
+        loans: state.userLoans.paydayLoans
     }
 }
 
