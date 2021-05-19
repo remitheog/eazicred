@@ -8,6 +8,7 @@ import {
   LOGIN_ENDPOINT,
   REGISTER_ENDPOINT,
 } from '../../routes/endpoints';
+import { LOGIN_URL } from '../../routes/paths';
 import {
   getUserFailure,
   getUserRequest,
@@ -43,19 +44,26 @@ export const loginUser = (data) => (dispatch, getState) => {
         })
         .catch(err => {
             dispatch(loginFailed(showError(err, "Please check and try again")))
-            dispatch(showMessage({message: showError(err, auth.error), type: 'error'}))
+            dispatch(showMessage({
+                message: showError(err, "Error occurred check your password and try again"),
+                type: 'error'
+            }))
         })
 }
 
-export const registerUser = (data) => (dispatch, getState) => {
+export const registerUser = (data, useHistory) => (dispatch, getState) => {
     dispatch(registerRequest())
     const auth = getState().auth
     axiosInstance.post(REGISTER_ENDPOINT, {...data}, tokenConfig(getState))
         .then(res => {
             dispatch(registerSuccess(res.data.data))
+            useHistory.push(LOGIN_URL)
         })
         .catch(err => {
             dispatch(registerFailed(showError(err, "Please check and try again")))
-            dispatch(showMessage({message: showError(err, auth.error), type: 'error'}))
+            dispatch(showMessage({
+                message: showError(err, "Error occurred check your passwords and try again"),
+                type: 'error'
+            }))
         })
 }

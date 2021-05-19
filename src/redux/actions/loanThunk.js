@@ -63,7 +63,6 @@ export const fetchAllUserLoans = () => (dispatch, getState) => {
     const sme = axiosInstance.get(`${USER_SME_LOANS_ENDPOINT}${userID}`, tokenConfig(getState))
     Promise.all([payday, sme])
         .then(res => {
-            console.log(res)
             dispatch(fetchUserPaydayLoansSuccess(res[0].data.data))
             dispatch(fetchUserSmeLoansSuccess(res[1].data.data))
         })
@@ -81,7 +80,6 @@ export const applyPaydayLoan = data => (dispatch, getState) => {
     for ( let key in data ) {
         formData.append(key, data[key]);
     }
-    console.log(data)
     axiosInstance.post(PAYDAY_LOAN_ENDPOINT, {...data}, tokenConfig(getState))
         .then(res => {
             dispatch(applyPaydaySuccess(res.data))
