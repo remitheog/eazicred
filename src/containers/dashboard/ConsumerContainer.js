@@ -70,9 +70,6 @@ const ConsumerContainer = ({user}) => {
             case "checkbox":
                 setField({...field, [name]: checked})
                 break
-            case "file":
-                setField({...field, [name]: e.target.files[0]})
-                break
             default:
                 setField({...field, [name]: value})
                 break

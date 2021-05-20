@@ -23,6 +23,7 @@ import Terms from './components/Terms';
 import Dashboard from './components/users/Dashboard';
 import History from './components/users/History';
 import LoanApplication from './components/users/LoanApplication';
+import SendPaydayFiles from './components/users/SendPaydayFiles';
 import ConsumerContainer from './containers/dashboard/ConsumerContainer';
 import ProfileContainer from './containers/dashboard/ProfileContainer';
 import SettingsContainer from './containers/dashboard/SettingsContainer';
@@ -35,6 +36,7 @@ import {
   ADMIN_LOGIN_URL,
   ADMIN_USERS_URL,
   DASHBOARD_CONSUMER_LOAN_APPLICATION_URL,
+  DASHBOARD_CONSUMER_LOAN_UPLOAD_URL,
   DASHBOARD_HISTORY_URL,
   DASHBOARD_LOAN_APPLICATION_URL,
   DASHBOARD_PROFILE_URL,
@@ -64,7 +66,7 @@ function App() {
         DASHBOARD_HISTORY_URL,
         ADMIN_AGENTS_URL,
         ADMIN_USERS_URL,
-        ADMIN_LOANS_URL,
+        ADMIN_LOANS_URL,DASHBOARD_CONSUMER_LOAN_UPLOAD_URL,
         ADMIN_LOGIN_URL
     ]
     return (
@@ -87,6 +89,7 @@ function App() {
                 <ProtectedRoute exact path={ADMIN_LOANS_URL} component={Loans}/>
                 <ProtectedRoute path={DASHBOARD_PROFILE_URL} component={ProfileContainer}/>
                 <ProtectedRoute path={DASHBOARD_SETTING_URL} component={SettingsContainer}/>
+                <ProtectedRoute path={DASHBOARD_CONSUMER_LOAN_UPLOAD_URL} component={SendPaydayFiles}/>
                 <ProtectedRoute path={DASHBOARD_CONSUMER_LOAN_APPLICATION_URL} component={ConsumerContainer}/>
                 <ProtectedRoute path={DASHBOARD_SME_LOAN_APPLICATION_URL} component={SMEContainer}/>
                 <ProtectedRoute path={DASHBOARD_LOAN_APPLICATION_URL} component={LoanApplication}/>

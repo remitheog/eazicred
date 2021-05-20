@@ -12,6 +12,7 @@ export const DASHBOARD_PROFILE_URL = '/users/profile'
 export const DASHBOARD_SETTING_URL = '/users/setting'
 export const DASHBOARD_LOAN_APPLICATION_URL = '/users/loan'
 export const DASHBOARD_CONSUMER_LOAN_APPLICATION_URL = '/users/loan/consumer'
+export const DASHBOARD_CONSUMER_LOAN_UPLOAD_URL = '/users/loan/upload'
 export const DASHBOARD_SME_LOAN_APPLICATION_URL = '/users/loan/sme'
 export const DASHBOARD_HISTORY_URL = '/users/history'
 

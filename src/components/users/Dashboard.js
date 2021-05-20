@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Loader from '../../Common/Loader';
 import { getUser } from '../../redux/actions/authThunks';
 import DashboardContainer from './DashboardContainer';
-import LoansList from './LoansList';
+import LoansList, { currency } from './LoansList';
 
 const Dashboard = ({user, auth, loadUser, loans}) => {
     document.title = `Eazicred Dashboard`
@@ -42,11 +42,11 @@ const Dashboard = ({user, auth, loadUser, loans}) => {
                 </div>
                 <div>
                     <p>Total Received</p>
-                    <span>&#8358;{totalLoans()}</span>
+                    <span>{currency.format(totalLoans())}</span>
                 </div>
                 <div>
                     <p>Total Paid</p>
-                    <span>&#8358;{totalLoans()}</span>
+                    <span>{currency.format(totalLoans())}</span>
                 </div>
             </div>
             <LoansList/>
