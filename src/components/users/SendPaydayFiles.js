@@ -81,7 +81,7 @@ const SendPaydayFiles = ({history, user}) => {
                     console.log(err)
                 })
         }
-        dispatch(uploadFiles([Object.entries(field)]))
+        dispatch(uploadFiles(field))
     }
     return (loading ? <Loader/> :
         <DashboardContainer page={"Upload files"}>
